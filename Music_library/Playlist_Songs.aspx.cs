@@ -21,6 +21,7 @@ namespace Music_library
         Class1 cs;
         string mail=null;
         int play_id;
+        string playlistowner=null;
 
         void startcon()
         {
@@ -49,11 +50,24 @@ namespace Music_library
                 {
                     if (read.Read())
                     {
+                        playlistowner = read["P_User_Email"].ToString();
                         plnm.Text = read["P_Name"].ToString();
                         read.Close();
                     }
                 }
                 fillSongsByPlaylist();
+                foreach (DataListItem item in songByPlaylist.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton songRemoveBtn = (LinkButton)item.FindControl("songremove");
+
+                        if (playlistowner == mail)
+                        {
+                            songRemoveBtn.Visible = true;
+                        }
+                    }
+                }
             }           
         }
 

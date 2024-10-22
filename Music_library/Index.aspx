@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Music_library.Index" %>
+<%@ Register TagPrefix="uc" TagName="currentPlaying" Src="~/currentPlaying.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -46,6 +47,9 @@
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
+
+    <!-- Include the currentPlaying user control -->
+    <uc:currentPlaying runat="server" ID="currentPlayingControl" />
 
     <!-- ##### Latest Albums Area Start ##### -->
     <section class="latest-albums-area section-padding-100">

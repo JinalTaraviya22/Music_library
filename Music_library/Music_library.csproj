@@ -87,6 +87,7 @@
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\one-music-icon.css" />
     <Content Include="css\owl.carousel.min.css" />
+    <Content Include="currentPlaying.ascx" />
     <Content Include="fonts\classy.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
@@ -197,6 +198,13 @@
       <DependentUpon>Artist_Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="currentPlaying.ascx.cs">
+      <DependentUpon>currentPlaying.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="currentPlaying.ascx.designer.cs">
+      <DependentUpon>currentPlaying.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -104,7 +104,7 @@
                                             <p style="display: inline;">
                                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label>
                                             </p>
-                                            <asp:LinkButton ID="songremove" runat="server" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songRemovePlaylist">
+                                            <asp:LinkButton ID="songremove" runat="server" Visible="false" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songRemovePlaylist">
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
                                         </div><br />
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <!-- ##### Song Area End ##### -->
+    <!-- ##### Song Area End ##### -->ipt>
 </asp:Content>
 
 
