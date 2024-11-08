@@ -20,8 +20,6 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <section class="miscellaneous-area section-padding-100-0">
-
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -50,7 +48,7 @@
                                 <div class="oneMusic-tab-text">
                                     <p>
                                         <center>
-                                            <asp:GridView ID="usrgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="usrgrid_RowCommand">
+                                            <asp:GridView ID="usrgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="usrgrid_RowCommand" Width="100%">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
                                                         <ItemTemplate>
@@ -102,7 +100,7 @@
                                 <div class="oneMusic-tab-text">
                                     <p>
                                         <center>
-                                            <asp:GridView ID="artistgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="artistgrid_RowCommand">
+                                            <asp:GridView ID="artistgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="artistgrid_RowCommand" Width="100%">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
                                                         <ItemTemplate>
@@ -164,7 +162,7 @@
                                 <div class="oneMusic-tab-text">
                                     <p style="text-align: center">
                                         <center>
-                                            <asp:GridView ID="albumgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="albumgrid_RowCommand">
+                                            <asp:GridView ID="albumgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="albumgrid_RowCommand" Width="100%">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
                                                         <ItemTemplate>
@@ -208,9 +206,9 @@
                                 <!-- Tab Text -->
                                 <div class="oneMusic-tab-text">
                                     <p><center>
-                                        <asp:GridView ID="dellaccgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="dellaccgrid_RowCommand">
+                                        <asp:GridView ID="dellaccgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="dellaccgrid_RowCommand" Width="100%">
                                             <Columns>
-                                                <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
+                                                <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" HeaderStyle-HorizontalAlign="center" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label27" runat="server" Text='<%# Eval("Ad_Id") %>'></asp:Label>
                                                     </ItemTemplate>

@@ -15,12 +15,12 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    
+
     <section class="album-catagory section-padding-100-0">
         <!-- ##### Admin Song add Area Start ##### -->
         <asp:UpdatePanel ID="admin" runat="server" Visible="false">
             <ContentTemplate>
-                 <section class="newsletter-testimonials-area">
+                <section class="newsletter-testimonials-area">
                     <div class="container">
                         <div class="row">
 
@@ -107,12 +107,11 @@
                                             <asp:LinkButton ID="songremove" runat="server" Visible="false" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songRemovePlaylist">
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
-                                        </div><br />
-                                        <audio preload="auto" controls>
-                                            <source src='<%# Eval("S_Audio") %>'>
-                                        </audio>
+                                            <audio preload="auto" controls style="width: 200px">
+                                                <source src="<%# Eval("S_Audio") %>">
+                                            </audio>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </ItemTemplate>
                     </asp:DataList>
@@ -122,7 +121,8 @@
         </div>
     </section>
 
-    <!-- ##### Song Area End ##### -->ipt>
+    <!-- ##### Song Area End ##### -->
+
 </asp:Content>
 
 

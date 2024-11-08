@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Music_library.Site1" %>
+
 <%@ Register Src="~/currentPlaying.ascx" TagPrefix="uc" TagName="CurrentPlaying" %>
 
 <!DOCTYPE html>
@@ -34,16 +35,6 @@
                 </head>
 
                 <body>
-                    <!-- Preloader -->
-                    <!-- <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div> -->
-
                     <!-- ##### Header Area Start ##### -->
                     <header class="header-area">
                         <!-- Navbar Area -->
@@ -86,6 +77,9 @@
                                                     <li><a href="Artists.aspx">Artists</a></li>
                                                     <li>
                                                         <asp:LinkButton ID="admin_btn" Visible="false" OnClick="admin_btn_Click" runat="server">Admin</asp:LinkButton></li>
+                                                    <li>
+                                                       
+                                                    </li>
                                                 </ul>
 
                                                 <!-- Login/Register & Cart Button -->
@@ -95,6 +89,10 @@
                                                         <asp:LinkButton ID="login_btn" CausesValidation="false" OnClick="login_Click" runat="server">Login</asp:LinkButton>
                                                         <%--<a href="login.html" id="loginBtn">Login / Register</a>--%>
                                                     </div>
+                                                     <div class="login-register-btn mr-50">
+                                                         <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/core-img/search.png" Height="20" Width="20" OnClick="ImageButton1_Click"/>
+                                                    </div>
+
                                                     <!-- Cart Button -->
                                                     <div class="cart-btn">
                                                         <asp:ImageButton ID="logout_btn" runat="server" Visible="False" OnClick="logout_btn_Click" ImageUrl="~/img/core-img/logout.png" Height="25" Width="25" />
@@ -889,6 +887,50 @@
                 <!-- Active js -->
                 <script src="js/active.js"></script>
 </body>
+<script>
+    function searchFunction() {
+        var input = document.getElementById("searchInput");
+        var filter = input.value.toLowerCase();
+        var results = document.getElementById("searchResults");
+
+        // Clear previous results
+        results.innerHTML = '';
+
+        if (filter) {
+            // AJAX request to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "Site1.master.cs", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var items = JSON.parse(xhr.responseText);
+                    items.forEach(function (item) {
+                        var div = document.createElement('div');
+                        div.textContent = item;
+                        div.onclick = function () {
+                            // Redirect to the item page or perform an action
+                            window.location.href = item.replace(" ", "_") + ".html"; // Example redirection
+                        };
+                        results.appendChild(div);
+                    });
+
+                    // Show results if any
+                    results.style.display = results.childNodes.length > 0 ? "block" : "none";
+                }
+            };
+            xhr.send("searchQuery=" + encodeURIComponent(filter));
+        } else {
+            results.style.display = "none";
+        }
+    }
+
+    // Hide results when clicking outside
+    window.onclick = function (event) {
+        if (!event.target.matches('#searchInput')) {
+            document.getElementById("searchResults").style.display = "none";
+        }
+    }
+</script>
 
 </html>
 </asp:ContentPlaceHolder>
