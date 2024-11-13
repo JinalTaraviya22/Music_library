@@ -87,17 +87,17 @@ namespace Music_library
                         if (type == "Song")
                         {
                             // Display as a single song area
-                            DisplaySingleSong(id,name, artistName, image, audio);
+                            DisplaySingleSong(id, name, artistName, image, audio);
                         }
                         else if (type == "Album")
                         {
                             // Display as a single album in album category area
-                            DisplaySingleAlbum(id,name, image);
+                            DisplaySingleAlbum(id, name, image);
                         }
                         else if (type == "Artist")
                         {
                             // Display as a single album area in buy now area
-                            DisplaySingleArtist(id,artistName, image);
+                            DisplaySingleArtist(id, artistName, image);
                         }
                     }
                 }
@@ -133,21 +133,21 @@ namespace Music_library
             // Append to the Literal control
             litSongResults.Text += songHtml;
         }
-        private void DisplaySingleAlbum(int id,string albumName, string image)
+        private void DisplaySingleAlbum(int id, string albumName, string image)
         {
             // Create HTML for a single album
             string albumHtml = $@"
-        <div class='col-12 col-sm-4 col-md-3 col-lg-2 single-album-item'>
-            <div class='single-album'>
-                <img src='{image}' alt=''>
-                <div class='album-info'>
-                    <a href='Song_List.aspx?Albumid={id}'>
+        <a href='Song_List.aspx?Albumid={id}'>
+            <div class='col-12 col-sm-4 col-md-3 col-lg-2 single-album-item'>
+                <div class='single-album'>
+                    <img src='{image}' alt=''>
+                    <div class='album-info'>
                         <h5>{albumName}</h5>
-                    </a>
-                    <p>Album Description Here</p>
+                        <p>Album Description Here</p>
+                    </div>
                 </div>
             </div>
-        </div>";
+        </a>";
 
             // Append to the Literal control
             litAlbumResults.Text += albumHtml;
@@ -157,19 +157,18 @@ namespace Music_library
         {
             // Create HTML for a single artist
             string artistHtml = $@"
-        <div class='col-12 col-sm-6 col-md-3'>
-            <div class='single-album-area'>
-                <div class='album-thumb'>
-                    <img src='{image}' alt=''>
-                </div>
-                <div class='album-info'>
-                    <a href='Artist_Profile.aspx?Aid={id}'>
-                        <h5>{artistName}</h5>
-                    </a>
-                    <p>Artist Description Here</p>
-                </div>
-            </div>
-        </div>";
+                <div class='col-12 col-sm-6 col-md-3'>
+                    <div class='single-event-area mb-30'>
+                        <div class='event-thumbnail'>
+                            <img src='{image}' alt=''>
+                        </div>
+                        <div class='album-info'>
+                            <a href='Artist_Profile.aspx?Aid={id}'>
+                                <h5>{artistName}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>";
 
             // Append to the Literal control
             litBuyNowResults.Text += artistHtml;

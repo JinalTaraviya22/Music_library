@@ -42,10 +42,21 @@ namespace Music_library
 
         protected void a_submit_Click(object sender, EventArgs e)
         {
-            img_upload();
-            cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm,a_tbdes.Text);
-            Session["mail"] = a_tbmail.Text;
-            Response.Redirect("Index.aspx");
+            //img_upload();
+            //cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm,a_tbdes.Text);
+            //Session["mail"] = a_tbmail.Text;
+            //Response.Redirect("Index.aspx");
+            if (!string.IsNullOrEmpty(razorpay_payment_id.Value))
+            {
+                img_upload();
+                cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm, a_tbdes.Text);
+                Session["mail"] = a_tbmail.Text;
+                Response.Redirect("Index.aspx");
+            }
+            else
+            {
+
+            }
         }
     }
 }

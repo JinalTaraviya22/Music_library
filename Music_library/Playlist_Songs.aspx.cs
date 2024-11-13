@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -31,44 +30,47 @@ namespace Music_library
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            startcon();
-            play_id = Convert.ToInt32(Request.QueryString["Playid"]);
-            if (Session["mail"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                mail = Session["mail"].ToString();
-                if (mail == "admin123@gmail.com")
+            if (!Page.IsPostBack)
+            { //do something 
+                startcon();
+                play_id = Convert.ToInt32(Request.QueryString["Playid"]);
+                if (Session["mail"] == null)
                 {
-                    admin.Visible = true;
+                    Response.Redirect("Login.aspx");
                 }
-                cmd = new SqlCommand("select * from Playlist_tbl where P_Id='" + play_id + "'", con);
-                read = cmd.ExecuteReader();
-                if (read.HasRows)
+                else
                 {
-                    if (read.Read())
+                    mail = Session["mail"].ToString();
+                    if (mail == "admin123@gmail.com")
                     {
-                        playlistowner = read["P_User_Email"].ToString();
-                        plnm.Text = read["P_Name"].ToString();
-                        read.Close();
+                        admin.Visible = true;
                     }
-                }
-                fillSongsByPlaylist();
-                foreach (DataListItem item in songByPlaylist.Items)
-                {
-                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    cmd = new SqlCommand("select * from Playlist_tbl where P_Id='" + play_id + "'", con);
+                    read = cmd.ExecuteReader();
+                    if (read.HasRows)
                     {
-                        LinkButton songRemoveBtn = (LinkButton)item.FindControl("songremove");
-
-                        if (playlistowner == mail)
+                        if (read.Read())
                         {
-                            songRemoveBtn.Visible = true;
+                            playlistowner = read["P_User_Email"].ToString();
+                            plnm.Text = read["P_Name"].ToString();
+                            read.Close();
+                        }
+                    }
+                    fillSongsByPlaylist();
+                    foreach (DataListItem item in songByPlaylist.Items)
+                    {
+                        if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                        {
+                            LinkButton songRemoveBtn = (LinkButton)item.FindControl("songremove");
+
+                            if (playlistowner == mail)
+                            {
+                                songRemoveBtn.Visible = true;
+                            }
                         }
                     }
                 }
-            }           
+            }
         }
 
         void fillSongsByPlaylist() {
@@ -82,7 +84,21 @@ namespace Music_library
         protected void songByPlaylist_ItemCommand(object source, DataListCommandEventArgs e)
         {
             int song_id = Convert.ToInt32(e.CommandArgument);
-            if(e.CommandName== "cmd_songRemovePlaylist")
+            if (e.CommandName == "cmd_songidForplaylist")
+            {
+                int songid = Convert.ToInt32(e.CommandArgument);
+                Panel panel = (Panel)songByPlaylist.Items[0].FindControl("Panel1");
+                if (panel != null)
+                {
+                    DropDownList dropDownList = (DropDownList)panel.FindControl("ddplaylist");
+                    if (dropDownList != null)
+                    {
+                        int playid = Convert.ToInt32(dropDownList.SelectedValue);
+                        cs.playlist_Songsadd(playid, song_id);
+                        Response.Redirect("User_Account.aspx");
+                    }
+                }
+            }else if(e.CommandName== "cmd_songRemovePlaylist")
             {
                 cs.playlist_Songsdel(play_id,song_id);
                 fillSongsByPlaylist();
