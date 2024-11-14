@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Music_library.Site1" %>
 
-<%@ Register Src="~/currentPlaying.ascx" TagPrefix="uc" TagName="CurrentPlaying" %>
-
 <!DOCTYPE html>
 
 <html>

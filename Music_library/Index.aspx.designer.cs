@@ -15,15 +15,6 @@ namespace Music_library
     {
 
         /// <summary>
-        /// currentPlayingControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Music_library.currentPlaying currentPlayingControl;
-
-        /// <summary>
         /// ListView2 control.
         /// </summary>
         /// <remarks>

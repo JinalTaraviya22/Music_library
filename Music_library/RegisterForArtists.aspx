@@ -72,33 +72,7 @@
             </div>
         </div>
     </section>
-    <form id="payment_form" method="post" runat="server" style="display: none;">
-        <asp:HiddenField ID="razorpay_payment_id" runat="server" />
-    </form>
     <!-- ##### Login Area End ##### -->
-    <script type="text/javascript">
-        function openRazorpay() {
-            var options = {
-                "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
-                "amount": "10000", // Amount in paise (10000 paise = 100 INR)
-                "currency": "INR",
-                "name": "Your Site Name",
-                "description": "Registration Fee",
-                "image": "https://example.com/your_logo.jpg", // Replace with your logo URL
-                "handler": function (response) {
-                    // Send the payment details to your server
-                    document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                    document.getElementById('payment_form').submit();
-                },
-                "theme": {
-                    "color": "#F37254"
-                }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-            return false; // Prevent form submission
-        }
-    </script>
 </asp:Content>
 
 

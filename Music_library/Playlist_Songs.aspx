@@ -30,7 +30,7 @@
                                     <div class="section-heading text-left mb-50">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item show active">
-                                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Add Songs</a>
+                                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Genre</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -108,27 +108,6 @@
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
-                                            <asp:Button ID="dl1b_playlist" CssClass="button-57" runat="server" Text="Add to playlist" />
-                                            <%--PopUp Demo--%>
-                                            <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="500">
-                                                <h1>Playlists</h1>
-                                                <asp:DropDownList ID="ddplaylist" CssClass="form-control" runat="server" DataSourceID="PlaylistByUserId" DataTextField="P_Name" DataValueField="P_Id">
-                                                    <asp:ListItem>--Select Playlist--</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="PlaylistByUserId" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Playlist_tbl] WHERE ([P_User_Email] = @P_User_Email)">
-                                                    <SelectParameters>
-                                                        <asp:SessionParameter Name="P_User_Email" SessionField="mail" Type="String" />
-                                                    </SelectParameters>
-                                                </asp:SqlDataSource>
-                                                <br />
-                                                <div class="btnbyside">
-                                                    <asp:Button ID="btnadd" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songidForplaylist" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Add" />
-                                                    <asp:Button ID="btncancel" runat="server" Text="Cancel" CssClass="btn oneMusic-btn mt-30" />
-                                                </div>
-                                            </asp:Panel>
-
-                                            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="dl1b_playlist" PopupControlID="Panel1" OkControlID="btncancel"></ajaxToolkit:ModalPopupExtender>
-                                            <%--PopUp Demo--%>
                                             <audio preload="auto" style="width: 200px">
                                                 <source src="<%# Eval("S_Audio") %>">
                                             </audio>

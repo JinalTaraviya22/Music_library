@@ -30,8 +30,6 @@ namespace Music_library
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            { //do something 
                 startcon();
                 play_id = Convert.ToInt32(Request.QueryString["Playid"]);
                 if (Session["mail"] == null)
@@ -70,7 +68,6 @@ namespace Music_library
                         }
                     }
                 }
-            }
         }
 
         void fillSongsByPlaylist() {
@@ -84,21 +81,7 @@ namespace Music_library
         protected void songByPlaylist_ItemCommand(object source, DataListCommandEventArgs e)
         {
             int song_id = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "cmd_songidForplaylist")
-            {
-                int songid = Convert.ToInt32(e.CommandArgument);
-                Panel panel = (Panel)songByPlaylist.Items[0].FindControl("Panel1");
-                if (panel != null)
-                {
-                    DropDownList dropDownList = (DropDownList)panel.FindControl("ddplaylist");
-                    if (dropDownList != null)
-                    {
-                        int playid = Convert.ToInt32(dropDownList.SelectedValue);
-                        cs.playlist_Songsadd(playid, song_id);
-                        Response.Redirect("User_Account.aspx");
-                    }
-                }
-            }else if(e.CommandName== "cmd_songRemovePlaylist")
+            if(e.CommandName== "cmd_songRemovePlaylist")
             {
                 cs.playlist_Songsdel(play_id,song_id);
                 fillSongsByPlaylist();

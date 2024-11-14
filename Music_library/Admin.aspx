@@ -132,11 +132,6 @@
                                                             <asp:Image ID="Image4" runat="server" ImageAlign="AbsMiddle" ImageUrl='<%# Eval("A_Image") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Description" HeaderStyle-Width="200" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label23" runat="server" Text='<%# Eval("A_description") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Profile" HeaderStyle-Width="200" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="artistprofile" runat="server" CommandArgument='<%# Eval("A_Id") %>' CommandName="cmd_artistprofile">See Profile</asp:LinkButton>
