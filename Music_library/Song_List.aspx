@@ -85,8 +85,9 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Genre</label>
-                                                                <asp:DropDownList ID="s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="C_Name" DataValueField="C_Id"></asp:DropDownList>
-                                                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category_tbl]"></asp:SqlDataSource>
+                                                                <asp:TextBox ID="s_genre" CssClass="form-control" runat="server"></asp:TextBox>
+                                                                <%--<asp:DropDownList ID="s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="C_Name" DataValueField="C_Id"></asp:DropDownList>
+                                                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category_tbl]"></asp:SqlDataSource>--%>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputPassword1">Audio</label>
@@ -121,8 +122,9 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Genre</label>
-                                                                <asp:DropDownList ID="up_s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="C_Name" DataValueField="C_Id"></asp:DropDownList>
-                                                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category_tbl]"></asp:SqlDataSource>
+                                                                <asp:TextBox ID="up_s_genre" CssClass="form-control" runat="server"></asp:TextBox>
+                                                                <%--<asp:DropDownList ID="up_s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="C_Name" DataValueField="C_Id"></asp:DropDownList>
+                                                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category_tbl]"></asp:SqlDataSource>--%>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputPassword1">Cover</label>

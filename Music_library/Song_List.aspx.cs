@@ -105,7 +105,7 @@ namespace Music_library
             sid = Convert.ToInt32(up_dds.SelectedValue);
             ds = cs.song_selectId(sid);
             up_s_nm.Text = ds.Tables[0].Rows[0]["S_Name"].ToString();
-            up_s_genre.SelectedValue = ds.Tables[0].Rows[0]["S_Genre_Id"].ToString();
+            up_s_genre.Text = ds.Tables[0].Rows[0]["S_Genre"].ToString();
             upsimg = ds.Tables[0].Rows[0]["S_Image"].ToString();
             upsaud = ds.Tables[0].Rows[0]["S_Audio"].ToString();
         }
@@ -129,7 +129,7 @@ namespace Music_library
                 upsaud = "audio/" + ns + type;
                 up_s_audio.SaveAs(Server.MapPath(upsaud));
             }
-            cs.song_update(sid, up_s_nm.Text, upsaud, upsimg, up_s_genre.SelectedValue);
+            cs.song_update(sid, up_s_nm.Text, upsaud, upsimg, up_s_genre.Text);
             Response.Redirect("User_Account.aspx");
         }
 
@@ -177,7 +177,7 @@ namespace Music_library
         {
             song_cover();
             song_audio();
-            cs.song_insert(s_tbnm.Text, audiofinal, simgfinal, id, mail, s_genre.SelectedValue);
+            cs.song_insert(s_tbnm.Text, audiofinal, simgfinal, id, mail, s_genre.Text);
             Response.Redirect("User_Account.aspx");
         }
 

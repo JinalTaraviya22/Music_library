@@ -136,12 +136,12 @@ namespace Music_library
         }
         public void song_insert(string nm, string audio, string img, int alid, string mail, string genre)
         {
-            cmd = new SqlCommand("insert into Songs_tbl (S_Name,S_Audio,S_Image,S_Al_Id,S_A_Email,S_Genre_Id) values('" + nm + "','" + audio + "','" + img + "','" + alid + "','" + mail + "','" + genre + "')", con);
+            cmd = new SqlCommand("insert into Songs_tbl (S_Name,S_Audio,S_Image,S_Al_Id,S_A_Email,S_Genre) values('" + nm + "','" + audio + "','" + img + "','" + alid + "','" + mail + "','" + genre + "')", con);
             cmd.ExecuteNonQuery();
         }
         public void song_update(int id, string nm, string audio, string img, string genre)
         {
-            cmd = new SqlCommand("update Songs_tbl set S_Name='" + nm + "',S_Audio='" + audio + "',S_Image='" + img + "',S_Genre_Id='" + genre + "' where S_Id='" + id + "' ", con);
+            cmd = new SqlCommand("update Songs_tbl set S_Name='" + nm + "',S_Audio='" + audio + "',S_Image='" + img + "',S_Genre='" + genre + "' where S_Id='" + id + "' ", con);
             cmd.ExecuteNonQuery();
         }
         public void song_delete(int id)

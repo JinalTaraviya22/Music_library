@@ -30,7 +30,10 @@
                                     <div class="section-heading text-left mb-50">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item show active">
-                                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Genre</a>
+                                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">Artist</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="tab--2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Genre</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -39,12 +42,35 @@
                                             <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab--1">
                                                 <div class="oneMusic-tab-content">
                                                     <!-- Tab Text -->
+                                                     <div class="oneMusic-tab-text">
+                                                        <div action="#">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputGenre">Artist</label>
+                                                                <asp:DropDownList ID="a_name" OnSelectedIndexChanged="a_name_SelectedIndexChanged" CssClass="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="A_Name" DataValueField="A_Email" AutoPostBack="True"></asp:DropDownList>
+                                                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [A_Name], [A_Email] FROM [Artists_tbl]"></asp:SqlDataSource>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="exampleInputGenre">Albums</label>
+                                                                <asp:DropDownList ID="DropDownList2" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" CssClass="form-control" runat="server" DataTextField="Al_Name" DataValueField="Al_Id" AutoPostBack="true"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="exampleInputGenre">Songs</label>
+                                                                <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="S_Name" DataValueField="S_Id" AutoPostBack="True"></asp:DropDownList>
+                                                            </div>
+                                                            <asp:Button ID="s_btn_album" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Add" OnClick="s_btn_album_Click" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab--2">
+                                                <div class="oneMusic-tab-content">
+                                                    <!-- Tab Text -->
                                                     <div class="oneMusic-tab-text">
                                                         <div action="#">
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Genre</label>
-                                                                <asp:DropDownList ID="s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="C_Name" DataValueField="C_Id"></asp:DropDownList>
-                                                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category_tbl]"></asp:SqlDataSource>
+                                                                <asp:DropDownList ID="s_genre" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="S_Genre" DataValueField="S_Genre"></asp:DropDownList>
+                                                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT [S_Genre] FROM [Songs_tbl]"></asp:SqlDataSource>
                                                             </div>
                                                             <asp:Button ID="s_btn" CssClass="btn oneMusic-btn mt-30" OnClick="s_btn_Click" runat="server" Text="Add" />
                                                         </div>
