@@ -75,9 +75,7 @@
                                                     <li><a href="Artists.aspx">Artists</a></li>
                                                     <li>
                                                         <asp:LinkButton ID="admin_btn" Visible="false" OnClick="admin_btn_Click" runat="server">Admin</asp:LinkButton></li>
-                                                    <li>
-                                                       
-                                                    </li>
+                                                    <li></li>
                                                 </ul>
 
                                                 <!-- Login/Register & Cart Button -->
@@ -87,8 +85,8 @@
                                                         <asp:LinkButton ID="login_btn" CausesValidation="false" OnClick="login_Click" runat="server">Login</asp:LinkButton>
                                                         <%--<a href="login.html" id="loginBtn">Login / Register</a>--%>
                                                     </div>
-                                                     <div class="login-register-btn mr-50">
-                                                         <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/core-img/search.png" Height="20" Width="20" OnClick="ImageButton1_Click"/>
+                                                    <div class="login-register-btn mr-50">
+                                                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/core-img/search.png" Height="20" Width="20" OnClick="ImageButton1_Click" />
                                                     </div>
 
                                                     <!-- Cart Button -->
@@ -242,14 +240,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row justify-content-center">
-                <div class="col-12 col-lg-9">
-                    <div class="ablums-text text-center mb-70">
-                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.</p>
-                    </div>
-                </div>
-            </div> -->
-
+                     
                         <!-- latest playlist by-->
                         <div class="row">
                             <div class="col-12">
@@ -884,54 +875,11 @@
                 <script src="js/plugins/plugins.js"></script>
                 <!-- Active js -->
                 <script src="js/active.js"></script>
-</body>
-<script>
-    function searchFunction() {
-        var input = document.getElementById("searchInput");
-        var filter = input.value.toLowerCase();
-        var results = document.getElementById("searchResults");
-
-        // Clear previous results
-        results.innerHTML = '';
-
-        if (filter) {
-            // AJAX request to the server
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "Site1.master.cs", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var items = JSON.parse(xhr.responseText);
-                    items.forEach(function (item) {
-                        var div = document.createElement('div');
-                        div.textContent = item;
-                        div.onclick = function () {
-                            // Redirect to the item page or perform an action
-                            window.location.href = item.replace(" ", "_") + ".html"; // Example redirection
-                        };
-                        results.appendChild(div);
-                    });
-
-                    // Show results if any
-                    results.style.display = results.childNodes.length > 0 ? "block" : "none";
-                }
-            };
-            xhr.send("searchQuery=" + encodeURIComponent(filter));
-        } else {
-            results.style.display = "none";
-        }
-    }
-
-    // Hide results when clicking outside
-    window.onclick = function (event) {
-        if (!event.target.matches('#searchInput')) {
-            document.getElementById("searchResults").style.display = "none";
-        }
-    }
-</script>
-
-</html>
-</asp:ContentPlaceHolder>
+                <!-- common song player js -->
+                <%-- <script src="js/CommonSongPlayer_Js.js"></script>--%>
+                </body>
+    </html>
+            </asp:ContentPlaceHolder>
         </div>
     </form>
 </body>

@@ -82,6 +82,7 @@
     <Content Include="Artists.aspx" />
     <Content Include="Artist_Profile.aspx" />
     <Content Include="audio\dummy-audio.mp3" />
+    <Content Include="css\CommonSongPlayer_Style.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\audioplayer.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -167,6 +168,7 @@
     <Content Include="js\active.js" />
     <Content Include="js\bootstrap\bootstrap.min.js" />
     <Content Include="js\bootstrap\popper.min.js" />
+    <Content Include="js\CommonSongPlayer_Js.js" />
     <Content Include="js\jquery\jquery-2.2.4.min.js" />
     <Content Include="js\plugins\plugins.js" />
     <Content Include="Login.aspx" />

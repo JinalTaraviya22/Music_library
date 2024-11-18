@@ -1,0 +1,216 @@
+/* Common Player Container */
+.common_player-container {
+    display: flex;
+    align-items: start;
+    background-color: rgba(34, 34, 34, 0.9); /* Dark background */
+    padding: 15px;
+    margin: 0; /* Reset margin */
+    box-sizing: border-box; /* Include padding in width */
+    width: 100vw; /* Make sure it fits within parent container */
+    max-width: 100vw; /* Prevent any overflow */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional */
+    gap: 20px;
+}
+
+/* Parent Wrapper */
+.parent-container {
+    width: 100vw; /* Match viewport width */
+    max-width: 100vw; /* Prevent overflowing */
+    margin: 0; /* No margins */
+    padding: 0; /* No padding */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* Album Cover */
+.common_player-album-cover img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0; /* No rounded corners */
+}
+
+/* Music Player Details */
+.common_player-music-details {
+    flex: 1;
+}
+
+/* Song Info Container for Reusability */
+.common_player-song-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Song Title */
+.common_player-song-title {
+    margin: 0;
+    font-size: 16px;
+    color: #fff; /* White for contrast against dark background */
+}
+
+/* Song Actions (Add to Playlist, Like buttons) */
+.common_player-song-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.common_player-add-to-playlist-btn,
+.common_player-like-btn {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.common_player-add-to-playlist-btn:hover,
+.common_player-like-btn:hover {
+    background-color: #fff;
+    color: #444;
+}
+
+/* Music Controls */
+.common_player-music-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Play Button */
+.common_player-play-btn {
+    border: none;
+    background-color: #ffffff; /* White circle for the play button */
+    color: #444444; /* Spotify green icon inside the circle */
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Makes it a circle */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.common_player-play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Time Labels */
+.common_player-time {
+    font-size: 14px;
+    color: #aaaaaa; /* Light gray for time labels */
+}
+
+/* Progress Bar Container */
+.common_player-progress-container {
+    flex: 1;
+    position: relative;
+    height: 5px;
+    background-color: #444444; /* Dark gray for progress bar background */
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Progress Bar Background */
+.common_player-progress-bar-bg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Progress Bar Fill */
+.common_player-progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #ffffff; /* Spotify green for completed portion */
+    transition: width 0.1s linear;
+}
+
+/* Volume Controls */
+.common_player-volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.common_player-volume-icon {
+    font-size: 16px;
+    color: #ffffff; /* White volume icon */
+}
+
+.common_player-volume-bar {
+    width: 80px;
+    height: 5px;
+    appearance: none;
+    background-color: #444444; /* Dark gray for volume bar background */
+}
+
+.common_player-volume-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff; /* Spotify green for volume slider thumb */
+    border-radius: 50%;
+}
+
+/* New reusable class for any song item */
+.common_player-music-player {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 15px;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.common_player-music-player .common_player-song-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.common_player-music-player .common_player-song-title {
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.common_player-music-player .common_player-song-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.common_player-music-player .common_player-add-to-playlist-btn,
+.common_player-music-player .common_player-like-btn {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.common_player-music-player .common_player-add-to-playlist-btn:hover,
+.common_player-music-player .common_player-like-btn:hover {
+    background-color: #fff;
+    color: #444;
+}

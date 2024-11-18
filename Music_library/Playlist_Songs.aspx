@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Playlist_Songs.aspx.cs" Inherits="Music_library.Playlist_Songs" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,8 +9,7 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>See what’s new</p>
-            <h2>
-                <asp:Label ID="plnm" runat="server" Text="Label"></asp:Label></h2>
+            <h2><asp:Label ID="plnm" runat="server" Text="Label"></asp:Label></h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -42,20 +42,26 @@
                                             <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab--1">
                                                 <div class="oneMusic-tab-content">
                                                     <!-- Tab Text -->
-                                                     <div class="oneMusic-tab-text">
+                                                    <div class="oneMusic-tab-text">
                                                         <div action="#">
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Artist</label>
-                                                                <asp:DropDownList ID="a_name" OnSelectedIndexChanged="a_name_SelectedIndexChanged" CssClass="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="A_Name" DataValueField="A_Email" AutoPostBack="True"></asp:DropDownList>
+                                                                <asp:DropDownList ID="a_name" OnSelectedIndexChanged="a_name_SelectedIndexChanged" CssClass="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="A_Name" DataValueField="A_Email" AutoPostBack="True">
+                                                                    <asp:ListItem Text="Select Artist" Value="" />
+                                                                </asp:DropDownList>
                                                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [A_Name], [A_Email] FROM [Artists_tbl]"></asp:SqlDataSource>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Albums</label>
-                                                                <asp:DropDownList ID="DropDownList2" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" CssClass="form-control" runat="server" DataTextField="Al_Name" DataValueField="Al_Id" AutoPostBack="true"></asp:DropDownList>
+                                                                <asp:DropDownList ID="DropDownList2" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" CssClass="form-control" runat="server" DataTextField="Al_Name" DataValueField="Al_Id" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select Album" Value="" />
+                                                                </asp:DropDownList>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputGenre">Songs</label>
-                                                                <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="S_Name" DataValueField="S_Id" AutoPostBack="True"></asp:DropDownList>
+                                                                <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="S_Name" DataValueField="S_Id" AutoPostBack="True">
+                                                                    <asp:ListItem Text="Select Songs" Value="" />
+                                                                </asp:DropDownList>
                                                             </div>
                                                             <asp:Button ID="s_btn_album" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Add" OnClick="s_btn_album_Click" />
                                                         </div>
@@ -92,15 +98,15 @@
 
         <!-- ##### Song Area Start ##### -->
 
-        <div class="one-music-songs-area mb-70" style="margin-top: 40px;">
+        <div class="one-music-songs-area" style="margin-top: 10px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <!-- <div class="section-heading style-2">
-                        <p>Popular</p>
-                        <h2>Popular releases from Artist</h2>
-                    </div> -->
-                    </div>
+                    <%--<div class="col-12">
+                        <div class="section-heading style-2">
+                            <p>Popular</p>
+                            <h2>Popular releases from Artist</h2>
+                        </div>
+                    </div>--%>
                     <!-- Single Song Area -->
                     <%--<div class="col-12">
                         <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
@@ -118,9 +124,33 @@
                         </div>
                     </div>--%>
 
+                    <%-- song play area with db variables --%>
+                    <%--<div class="col-12">
+                        <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                            <div class="song-thumbnail">
+                                <img src='<%# Eval("S_Image") %>' alt="">
+                            </div>
+                            <div class="song-play-area">
+                                <div class="song-name">
+                                    <p style="display: inline;">
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label>
+                                    </p>
+                                    <asp:LinkButton ID="songremove" runat="server" Visible="false" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songRemovePlaylist">
+                                        <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
+                                    </asp:LinkButton>
+                                    <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
+                                    <audio preload="auto" style="width: 200px">
+                                        <source src="<%# Eval("S_Audio") %>">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
+
                     <asp:DataList ID="songByPlaylist" runat="server" OnItemCommand="songByPlaylist_ItemCommand">
                         <ItemTemplate>
                             <div class="col-12">
+
                                 <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                     <div class="song-thumbnail">
                                         <img src='<%# Eval("S_Image") %>' alt="">
@@ -134,16 +164,17 @@
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
-                                            <audio preload="auto" style="width: 200px">
+                                            <audio preload="auto" controls style="width: 200px">
                                                 <source src="<%# Eval("S_Audio") %>">
                                             </audio>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                         </ItemTemplate>
                     </asp:DataList>
-
                 </div>
+
             </div>
         </div>
     </section>
