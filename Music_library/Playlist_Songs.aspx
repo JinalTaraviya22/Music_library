@@ -9,7 +9,8 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>See what’s new</p>
-            <h2><asp:Label ID="plnm" runat="server" Text="Label"></asp:Label></h2>
+            <h2>
+                <asp:Label ID="plnm" runat="server" Text="Label"></asp:Label></h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -164,9 +165,13 @@
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
-                                            <audio preload="auto" controls style="width: 200px">
+                                            <audio preload="auto" controls style="width: 200px" data-song-title="<%# Eval("S_Name") %>">
                                                 <source src="<%# Eval("S_Audio") %>">
                                             </audio>
+
+                                            <div id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none;">
+                                                Currently Playing: <span id="current-song-title"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

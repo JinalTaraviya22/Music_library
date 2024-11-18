@@ -36,7 +36,7 @@ namespace Music_library
         }
 
         void fillplaylist() {
-            da = new SqlDataAdapter("Select * from Playlist_tbl where P_User_Email='admin123@gmail.com' ORDER BY newid()",con);
+            da = new SqlDataAdapter("Select * from Playlist_tbl where P_User_Email='admin123@gmail.com'",con);
             ds = new DataSet();
             da.Fill(ds);
             ListView2.DataSource = ds;

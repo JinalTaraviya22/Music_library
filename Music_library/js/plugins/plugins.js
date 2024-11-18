@@ -409,15 +409,34 @@ return t=a?function(t){return t&&a(r(t))}:function(t){return t&&r(t)}}function e
 
             if (isAutoPlay) thePlayer.addClass(cssClass.playing);
 
-            thePlayer.find('.' + cssClass.playPause).on('click', function() {
+            //thePlayer.find('.' + cssClass.playPause).on('click', function() {
+            //    if (thePlayer.hasClass(cssClass.playing)) {
+            //        $(this).attr('title', params.strPlay).find('a').html(params.strPlay);
+            //        thePlayer.removeClass(cssClass.playing);
+            //        isSupport ? theAudio.pause() : theAudio.Stop();
+            //    } else {
+            //        $(this).attr('title', params.strPause).find('a').html(params.strPause);
+            //        thePlayer.addClass(cssClass.playing);
+            //        isSupport ? theAudio.play() : theAudio.Play();
+            //    }
+            //    return false;
+            //});
+            thePlayer.find('.' + cssClass.playPause).on('click', function () {
                 if (thePlayer.hasClass(cssClass.playing)) {
                     $(this).attr('title', params.strPlay).find('a').html(params.strPlay);
                     thePlayer.removeClass(cssClass.playing);
                     isSupport ? theAudio.pause() : theAudio.Stop();
+
+                    // Hide the current song display when paused
+                    /*$('#current-song').fadeOut();*/
                 } else {
                     $(this).attr('title', params.strPause).find('a').html(params.strPause);
                     thePlayer.addClass(cssClass.playing);
                     isSupport ? theAudio.play() : theAudio.Play();
+
+                    // Show the current song display
+                    $('#current-song-title').text($this.attr('data-song-title')); // Assuming you set data-song-title on the audio element
+                    $('#current-song').fadeIn();
                 }
                 return false;
             });
