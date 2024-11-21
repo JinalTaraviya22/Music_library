@@ -58,6 +58,9 @@
                         <p>Playlist</p>
                         <h2>Playlists for different occations</h2>
                     </div>
+                    <div class="mb-4 align-items-end">
+                        <button class="btn" style="align-content: end">See All</button>
+                    </div>
                 </div>
             </div>
 
@@ -177,9 +180,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="new-hits-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                            <p>
-                                See what’s new
-                            </p>
+                            <p>See what’s new</p>
                             <h2>New Hits</h2>
                         </div>
 
@@ -209,13 +210,16 @@
                                             <img src='<%# Eval("S_Image") %>' alt="">
                                         </div>
                                         <div class="content-">
-                                            <h6><asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
+                                            <h6>
+                                                <asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
                                             <p>
                                                 <asp:Label ID="anm" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>
                                             </p>
                                         </div>
                                     </div>
-                                    <audio preload="auto" controls>
+                                    <audio preload="auto" controls 
+                                        data-song-title="<%# Eval("S_Name") %>"
+                                        data-song-image="<%# Eval("S_Image") %>">
                                         <source src='<%# Eval("S_Audio") %>'>
                                     </audio>
                                 </div>
@@ -232,78 +236,6 @@
                                     <h6>Power Play</h6>
                                     <p>
                                         In my mind
-                                    </p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>--%>
-
-                        <!-- Single Top Item -->
-                        <%--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/wt9.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Cristinne Smith</h6>
-                                    <p>
-                                        My Music
-                                    </p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>--%>
-
-                        <!-- Single Top Item -->
-                        <%--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/wt10.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>The Music Band</h6>
-                                    <p>
-                                        Underground
-                                    </p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>--%>
-
-                        <!-- Single Top Item -->
-                        <%--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/wt11.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Creative Lyrics</h6>
-                                    <p>
-                                        Songs and stuff
-                                    </p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>--%>
-
-                        <!-- Single Top Item -->
-                        <%--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/wt12.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>The Culture</h6>
-                                    <p>
-                                        Pop Songs
                                     </p>
                                 </div>
                             </div>
@@ -340,13 +272,15 @@
                         <asp:ListView ID="ListView3" runat="server" OnItemCommand="ListView3_ItemCommand">
                             <ItemTemplate>
                                 <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
-                                        <div class="thumbnail">
-                                            <img src='<%# Eval("A_Image") %>'>
-                                        </div>
-                                        <div class="content-">
-                                            <p><asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("A_Id") %>' CommandName="cmd_artistId"><asp:Label ID="Label4" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label></asp:LinkButton>
-                                            </p>
-                                        </div>
+                                    <div class="thumbnail">
+                                        <img src='<%# Eval("A_Image") %>'>
+                                    </div>
+                                    <div class="content-">
+                                        <p>
+                                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("A_Id") %>' CommandName="cmd_artistId">
+                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label></asp:LinkButton>
+                                        </p>
+                                    </div>
                                 </div>
                             </ItemTemplate>
                         </asp:ListView>

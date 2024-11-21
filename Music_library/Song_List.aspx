@@ -216,7 +216,7 @@
                                             <t />
                                             <t />
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
-                                            <asp:Button ID="dl1b_playlist" CssClass="button-57" runat="server" Text="Add to playlist" />
+                                            <asp:Button ID="dl1b_playlist" CssClass="button-57" runat="server" Text="+" />
                                             <%--PopUp Demo--%>
                                             <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="500">
                                                 <h1>Playlists</h1>
@@ -238,7 +238,10 @@
                                             <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="dl1b_playlist" PopupControlID="Panel1" OkControlID="btncancel"></ajaxToolkit:ModalPopupExtender>
                                             <%--PopUp Demo--%>
                                         </div>
-                                        <audio preload="auto" controls style="width: 200px">
+                                        <audio preload="auto" controls style="width: 200px"
+                                            data-song-title="<%# Eval("S_Name") %>"
+                                            data-song-image="<%# Eval("S_Image") %>"
+                                            data-song-audio="<%# Eval("S_Audio") %>">
                                             <source src="<%# Eval("S_Audio") %>">
                                         </audio>
                                     </div>

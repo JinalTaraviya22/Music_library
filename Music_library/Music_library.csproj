@@ -89,6 +89,7 @@
     <Content Include="css\classy-nav.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\magnific-popup.css" />
+    <Content Include="css\MusicPlayerCss.css" />
     <Content Include="css\one-music-icon.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="fonts\classy.svg" />
@@ -170,8 +171,10 @@
     <Content Include="js\bootstrap\popper.min.js" />
     <Content Include="js\CommonSongPlayer_Js.js" />
     <Content Include="js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="js\MusicPlayerJs.js" />
     <Content Include="js\plugins\plugins.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MusicPlayer.ascx" />
     <Content Include="Playlist_Songs.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterForArtists.aspx" />
@@ -218,6 +221,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MusicPlayer.ascx.cs">
+      <DependentUpon>MusicPlayer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MusicPlayer.ascx.designer.cs">
+      <DependentUpon>MusicPlayer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Playlist_Songs.aspx.cs">
       <DependentUpon>Playlist_Songs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,6 +264,7 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="SongDetails.cs" />
     <Compile Include="Song_List.aspx.cs">
       <DependentUpon>Song_List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

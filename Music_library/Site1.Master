@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Music_library.Site1" %>
 
+<%@ Register Src="~/MusicPlayer.ascx" TagPrefix="uc" TagName="MusicPlayer" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -240,7 +242,7 @@
                                 </div>
                             </div>
                         </div>
-                     
+
                         <!-- latest playlist by-->
                         <div class="row">
                             <div class="col-12">
@@ -877,10 +879,21 @@
                 <script src="js/active.js"></script>
                 <!-- common song player js -->
                 <%-- <script src="js/CommonSongPlayer_Js.js"></script>--%>
-                </body>
-    </html>
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
 </body>
+</html>
+</asp:ContentPlaceHolder>
+        </div>
+        <div id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
+            <div class="row" style="margin-left: 5px;">
+                <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
+                <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>
+                <%--<span id="current-song-audio"></span>--%>
+                <button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
+                    <i class="fa fa-play"></i>
+                </button>
+            </div>
+        </div>
+<%--<uc:MusicPlayer runat="server" ID="MusicPlayer" />--%>
+        </form>
+    </body>
 </html>

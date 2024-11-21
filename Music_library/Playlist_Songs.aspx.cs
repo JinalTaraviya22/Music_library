@@ -30,6 +30,7 @@ namespace Music_library
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             startcon();
             play_id = Convert.ToInt32(Request.QueryString["Playid"]);
             if (Session["mail"] == null)
