@@ -40,7 +40,7 @@
                                     <h2>Playlists</h2>
                                 </div>
 
-                                <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="DataList2_ItemCommand">
+                                <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" OnItemCommand="DataList2_ItemCommand" OnItemDataBound="DataList2_ItemDataBound">
                                     <ItemTemplate>
                                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
                                             <div class="thumbnail">

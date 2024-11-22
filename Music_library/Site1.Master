@@ -883,7 +883,7 @@
 </html>
 </asp:ContentPlaceHolder>
         </div>
-        <div id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
+        <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
             <div class="row" style="margin-left: 5px;">
                 <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
                 <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>

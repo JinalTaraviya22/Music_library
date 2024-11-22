@@ -218,7 +218,7 @@
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
                                             <asp:Button ID="dl1b_playlist" CssClass="button-57" runat="server" Text="+" />
                                             <%--PopUp Demo--%>
-                                            <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="500">
+                                            <asp:Panel ID="Panel1" runat="server" BackColor="white" Width="500" style="z-index:3;padding:10px;">
                                                 <h1>Playlists</h1>
                                                 <asp:DropDownList ID="ddplaylist" CssClass="form-control" runat="server" DataSourceID="PlaylistByUserId" DataTextField="P_Name" DataValueField="P_Id">
                                                     <asp:ListItem>--Select Playlist--</asp:ListItem>

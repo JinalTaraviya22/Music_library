@@ -35,6 +35,8 @@ namespace Music_library
             img_upload();
             cs.reg_insert(r_tbmail.Text,r_tbnm.Text,r_tbdob.Text,r_tbpwd.Text,newnm);
             Session["mail"] = r_tbmail.Text;
+
+            cs.playlist_create(r_tbmail.Text,"Liked Songs","img/playlist_img/Liked_Playlist.png");
             Response.Redirect("Index.aspx");
         }
 

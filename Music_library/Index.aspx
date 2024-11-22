@@ -58,8 +58,9 @@
                         <p>Playlist</p>
                         <h2>Playlists for different occations</h2>
                     </div>
-                    <div class="mb-4 align-items-end">
-                        <button class="btn" style="align-content: end">See All</button>
+                    <div class="mb-4" style="display: flex; justify-content: flex-end">
+                        <asp:LinkButton ID="Playlist_SeeAll" CssClass="btn" runat="server" OnClick="Playlist_SeeAll_Click">See All</asp:LinkButton>
+                        <%--<button class="btn" style="align-content: end">See All</button>--%>
                     </div>
                 </div>
             </div>
@@ -217,9 +218,10 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <audio preload="auto" controls 
+                                    <audio preload="auto" controls
                                         data-song-title="<%# Eval("S_Name") %>"
-                                        data-song-image="<%# Eval("S_Image") %>">
+                                        data-song-image="<%# Eval("S_Image") %>"
+                                        data-song-audio="<%# Eval("S_Audio") %>">
                                         <source src='<%# Eval("S_Audio") %>'>
                                     </audio>
                                 </div>
@@ -278,7 +280,8 @@
                                     <div class="content-">
                                         <p>
                                             <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("A_Id") %>' CommandName="cmd_artistId">
-                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label></asp:LinkButton>
+                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>
+                                            </asp:LinkButton>
                                         </p>
                                     </div>
                                 </div>

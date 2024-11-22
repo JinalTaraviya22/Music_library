@@ -2,6 +2,16 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        audio {
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            height: auto !important;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
@@ -171,6 +181,7 @@
                                                 data-song-audio="<%# Eval("S_Audio") %>">
                                                 <source src="<%# Eval("S_Audio") %>">
                                             </audio>
+
                                         </div>
                                     </div>
                                 </div>
@@ -178,16 +189,16 @@
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
-                <%--<div id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
+                <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
                     <div class="row" style="margin-left: 5px;">
-                        <img id="current-song-image" src="" alt="Current Song Image" style="height: 60px; margin-right: 10px;" />
-                        <h4 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h4>
-                        <span id="current-song-audio"></span>
+                        <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
+                        <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>
+                        <%--<span id="current-song-audio"></span>--%>
                         <button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
                             <i class="fa fa-play"></i>
                         </button>
                     </div>
-                </div>--%>
+                </div>
             </div>
         </div>
     </section>

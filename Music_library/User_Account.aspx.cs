@@ -179,6 +179,24 @@ namespace Music_library
             cs.accDeleteRequest(mail);
         }
 
+        protected void DataList2_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            // Check if the item is not a header or footer
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // Find the controls
+                Label p_nm = (Label)e.Item.FindControl("p_nm");
+                LinkButton aldel = (LinkButton)e.Item.FindControl("aldel");
+
+                // Check if the playlist name is "Liked Playlist"
+                if (p_nm != null && aldel != null && p_nm.Text == "Liked Songs")
+                {
+                    // Hide the delete button
+                    aldel.Visible = false;
+                }
+            }
+        }
+
         protected void p_btn_Click(object sender, EventArgs e)
         {
             fnm = "img/playlist_img/" + p_cover.FileName;

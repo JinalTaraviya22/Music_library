@@ -166,6 +166,7 @@ namespace Music_library
         public void playlist_create(string email, string nm, string img)
         {
             cmd = new SqlCommand("insert into Playlist_tbl (P_Name,P_User_Email,P_Image) values('" + nm + "','" + email + "','" + img + "')", con);
+
             cmd.ExecuteNonQuery();
         }
         public void playlist_delete(int id)

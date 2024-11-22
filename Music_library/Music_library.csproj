@@ -175,6 +175,7 @@
     <Content Include="js\plugins\plugins.js" />
     <Content Include="Login.aspx" />
     <Content Include="MusicPlayer.ascx" />
+    <Content Include="Playlists.aspx" />
     <Content Include="Playlist_Songs.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterForArtists.aspx" />
@@ -227,6 +228,13 @@
     </Compile>
     <Compile Include="MusicPlayer.ascx.designer.cs">
       <DependentUpon>MusicPlayer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Playlists.aspx.cs">
+      <DependentUpon>Playlists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Playlists.aspx.designer.cs">
+      <DependentUpon>Playlists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Playlist_Songs.aspx.cs">
       <DependentUpon>Playlist_Songs.aspx</DependentUpon>

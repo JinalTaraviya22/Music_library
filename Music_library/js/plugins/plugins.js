@@ -454,6 +454,59 @@ return t=a?function(t){return t&&a(r(t))}:function(t){return t&&r(t)}}function e
             //});
 
             // Play/Pause button click event
+            //thePlayer.find('.' + cssClass.playPause).on('click', function () {
+            //    if (thePlayer.hasClass(cssClass.playing)) {
+            //        $(this).attr('title', params.strPlay).find('a').html(params.strPlay);
+            //        thePlayer.removeClass(cssClass.playing);
+            //        isSupport ? theAudio.pause() : theAudio.Stop();
+            //    } else {
+            //        // Stop all other audio elements
+            //        $('.' + cssClass.playing).each(function () {
+            //            $(this).removeClass(cssClass.playing);
+            //            $(this).find('.' + cssClass.playPause).attr('title', params.strPlay).find('a').html(params.strPlay);
+            //            const otherAudio = $(this).find('audio')[0];
+            //            if (otherAudio) {
+            //                otherAudio.pause();
+            //                otherAudio.currentTime = 0; // Reset to the beginning
+            //            }
+            //        });
+
+            //        $(this).attr('title', params.strPause).find('a').html(params.strPause);
+            //        thePlayer.addClass(cssClass.playing);
+            //        isSupport ? theAudio.play() : theAudio.Play();
+
+            //        // Save the current song details in localStorage
+            //        const songTitle = $this.attr('data-song-title');
+            //        const songImage = $this.attr('data-song-image');
+            //        const songAudio = $this.attr('data-song-audio');
+
+            //        localStorage.setItem('currentSong', JSON.stringify({
+            //            title: songTitle,
+            //            image: songImage,
+            //            audio: songAudio
+            //        }));
+
+            //        // Update the current song display
+            //        $('#current-song-title').text(songTitle);
+            //        $('#current-song-image').attr('src', songImage);
+            //        $('#current-song-audio').text(songAudio); // or use the audio source
+            //        $('#current-song').fadeIn();
+            //    }
+            //    return false;
+            //});
+
+            //// On page load, check if a song is stored in localStorage and display it
+            //$(document).ready(function () {
+            //    const storedSong = localStorage.getItem('currentSong');
+            //    if (storedSong) {
+            //        const songData = JSON.parse(storedSong);
+            //        $('#current-song-title').text(songData.title);
+            //        $('#current-song-image').attr('src', songData.image);
+            //        $('#current-song-audio').text(songData.audio);
+            //        $('#current-song').fadeIn();
+            //    }
+            //});
+            // Play/Pause button in the datalist
             thePlayer.find('.' + cssClass.playPause).on('click', function () {
                 if (thePlayer.hasClass(cssClass.playing)) {
                     $(this).attr('title', params.strPlay).find('a').html(params.strPlay);
@@ -483,17 +536,21 @@ return t=a?function(t){return t&&a(r(t))}:function(t){return t&&r(t)}}function e
                     localStorage.setItem('currentSong', JSON.stringify({
                         title: songTitle,
                         image: songImage,
-                        audio: songAudio
+                        audio: songAudio,
                     }));
 
                     // Update the current song display
                     $('#current-song-title').text(songTitle);
                     $('#current-song-image').attr('src', songImage);
-                    $('#current-song-audio').text(songAudio); // or use the audio source
+                    $('#current-song').data('audio', theAudio); // Attach the audio element for control
                     $('#current-song').fadeIn();
+
+                    // Sync the current-song play button
+                    $('#play-pause-btn').find('i').removeClass('fa-play').addClass('fa-pause');
                 }
                 return false;
             });
+
 
             // On page load, check if a song is stored in localStorage and display it
             $(document).ready(function () {
@@ -502,8 +559,71 @@ return t=a?function(t){return t&&a(r(t))}:function(t){return t&&r(t)}}function e
                     const songData = JSON.parse(storedSong);
                     $('#current-song-title').text(songData.title);
                     $('#current-song-image').attr('src', songData.image);
-                    $('#current-song-audio').text(songData.audio);
                     $('#current-song').fadeIn();
+
+                    // Find the corresponding audio element in the playlist
+                    const audioElement = $(`audio[data-song-audio="${songData.audio}"]`)[0];
+                    if (audioElement) {
+                        $('#current-song').data('audio', audioElement);
+                    }
+
+                    // Initialize the play/pause button based on the audio state
+                    $('#play-pause-btn').find('i').addClass('fa-play');
+                }
+            });
+
+            // Syncing playlist audio controls
+            $('audio').on('play', function () {
+                // Stop other playing audio
+                $('audio').not(this).each(function () {
+                    this.pause();
+                    this.currentTime = 0; // Reset to the beginning
+                });
+
+                // Update current song details
+                const songTitle = $(this).attr('data-song-title');
+                const songImage = $(this).attr('data-song-image');
+                const songAudio = $(this).attr('data-song-audio');
+
+                localStorage.setItem('currentSong', JSON.stringify({
+                    title: songTitle,
+                    image: songImage,
+                    audio: songAudio,
+                }));
+
+                // Update the current playing display
+                $('#current-song-title').text(songTitle);
+                $('#current-song-image').attr('src', songImage);
+                $('#current-song').data('audio', this); // Link the audio element
+                $('#current-song').fadeIn();
+
+                // Sync the play button in #current-song
+                $('#play-pause-btn').find('i').removeClass('fa-play').addClass('fa-pause');
+            });
+
+            $('#play-pause-btn').on('click', function (event) {
+                event.preventDefault();  // Prevent default button behavior for play/pause
+                const currentSongDiv = $('#current-song');
+                const audioElement = currentSongDiv.data('audio');  // Retrieve the linked audio element
+
+                if (audioElement) {
+                    if (audioElement.paused) {
+                        console.log("Playing audio...");
+                        audioElement.play();  // Play the audio
+                        $(this).find('i').removeClass('fa-play').addClass('fa-pause');  // Update icon to pause
+                    } else {
+                        console.log("Pausing audio...");
+                        audioElement.pause();  // Pause the audio
+                        $(this).find('i').removeClass('fa-pause').addClass('fa-play');  // Update icon to play
+                    }
+                }
+            });
+
+            $('audio').on('pause', function () {
+                // Sync current playing button state
+                const currentAudio = $('#current-song').data('audio');
+                if (this === currentAudio) {
+                    $('#play-pause-btn').find('i').removeClass('fa-pause').addClass('fa-play');
                 }
             });
 

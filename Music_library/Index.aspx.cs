@@ -89,5 +89,10 @@ namespace Music_library
                 Response.Redirect("Artist_Profile.aspx?Aid=" + id + "");
             }
         }
+
+        protected void Playlist_SeeAll_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Playlists.aspx");
+        }
     }
 }

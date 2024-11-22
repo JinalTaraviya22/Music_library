@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Artists.aspx.cs" Inherits="Music_library.Artists" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder2">
-                   <!-- ##### Breadcumb Area Start ##### -->
+<asp:Content ID="Content3" runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
+    <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>See what’s new</p>
@@ -33,7 +34,7 @@
                 </asp:ListView>
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [A_Id], [A_Name], [A_Image] FROM [Artists_tbl]"></asp:SqlDataSource>
-                
+
                 <!-- Single Event Area -->
                 <!-- <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
@@ -291,8 +292,17 @@
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
-
-            </asp:Content>
+    <div id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
+        <div class="row" style="margin-left: 5px;">
+            <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
+            <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>
+            <%--<span id="current-song-audio"></span>--%>
+            <button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
+                <i class="fa fa-play"></i>
+            </button>
+        </div>
+    </div>
+</asp:Content>
 
 
 

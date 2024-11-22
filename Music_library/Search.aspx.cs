@@ -123,7 +123,10 @@ namespace Music_library
                             <div class='song-name'>
                                 <p>{songName}</p>
                             </div>
-                            <audio preload='auto' controls>
+                            <audio preload='auto' controls
+                                    data-song-title='{songName}'
+                                    data-song-image = '{image}'
+                                    data-song-audio = '{audio}' >
                                 <source src='{audio}'>
                             </audio>
                         </div>
