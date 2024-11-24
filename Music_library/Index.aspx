@@ -218,33 +218,13 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <audio preload="auto" controls
-                                        data-song-title="<%# Eval("S_Name") %>"
-                                        data-song-image="<%# Eval("S_Image") %>"
-                                        data-song-audio="<%# Eval("S_Audio") %>">
-                                        <source src='<%# Eval("S_Audio") %>'>
+                                    <audio preload="auto" controls >
+                                        <source src="<%# Eval("S_Audio") %>">
                                     </audio>
                                 </div>
                             </ItemTemplate>
                         </asp:ListView>
 
-                        <!-- Single Top Item -->
-                        <%--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/wt8.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Power Play</h6>
-                                    <p>
-                                        In my mind
-                                    </p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>--%>
                     </div>
                 </div>
 
@@ -288,82 +268,29 @@
                             </ItemTemplate>
                         </asp:ListView>
 
-                        <!-- Single Artist -->
-                        <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="150ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa2.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    William Parker
-                                </p>
-                            </div>
-                        </div>--%>
-
-                        <!-- Single Artist -->
-                        <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="200ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa3.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    Jessica Walsh
-                                </p>
-                            </div>
-                        </div>--%>
-
-                        <!-- Single Artist -->
-                        <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="250ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa4.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    Tha Stoves
-                                </p>
-                            </div>
-                        </div>--%>
-
-                        <!-- Single Artist -->
-                        <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa5.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    DJ Ajay
-                                </p>
-                            </div>
-                        </div>--%>
-
-                        <!-- Single Artist -->
-                        <%-- <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="350ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa6.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    Radio Vibez
-                                </p>
-                            </div>
-                        </div>--%>
-
-                        <!-- Single Artist -->
-                        <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="400ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa7.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>
-                                    Music 4u
-                                </p>
-                            </div>
-                        </div>--%>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- current playing song area start -->
+   <%-- <div id="now-playing" class="now-playing">
+        <div class="container d-flex align-items-center">
+            <div class="song-info">
+                <h5 id="song-title" style="color:white">No song playing</h5>
+                <p id="song-artist">---</p>
+            </div>
+            <div class="player-controls">
+                <button id="play-pause-btn" class="btn btn-primary">
+                    <i id="play-pause-icon" class="fa fa-play"></i>
+                </button>
+                <input type="range" id="progress-bar" value="0" class="progress-bar" />
+            </div>
+        </div>
+    </div>--%>
+    <!--current playing song area ends  -->
+
     <!-- ##### Miscellaneous Area End ##### -->
 </asp:Content>
 

@@ -883,16 +883,30 @@
 </html>
 </asp:ContentPlaceHolder>
         </div>
-        <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
+ <div id="now-playing" class="now-playing">
+     <div class="container d-flex align-items-center">
+         <div class="song-info">
+             <h5 id="song-title" style="color: white">No song playing</h5>
+             <p id="song-artist">---</p>
+         </div>
+         <div class="player-controls">
+             <button id="play-pause-btn" class="btn btn-primary">
+                 <i id="play-pause-icon" class="fa fa-play"></i>
+             </button>
+             <input type="range" id="progress-bar" value="0" class="progress-bar" />
+         </div>
+     </div>
+ </div>
+<%-- <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
             <div class="row" style="margin-left: 5px;">
                 <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
                 <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>
                 <%--<span id="current-song-audio"></span>--%>
-                <button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
+<%--<button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
                     <i class="fa fa-play"></i>
                 </button>
             </div>
-        </div>
+        </div>--%>
 <%--<uc:MusicPlayer runat="server" ID="MusicPlayer" />--%>
         </form>
     </body>

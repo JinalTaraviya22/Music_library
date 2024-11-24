@@ -73,7 +73,7 @@ namespace Music_library
 
         void fillSongsByPlaylist()
         {
-            da = new SqlDataAdapter("select * from Playlist_tbl JOIN Playlist_songs_tbl ON  Playlist_tbl.P_Id=Playlist_songs_tbl.Playlist_Id JOIN Songs_tbl ON Songs_tbl.S_Id=Playlist_Songs_tbl.Song_id where Playlist_tbl.P_Id='" + play_id + "'", con);
+            da = new SqlDataAdapter("select * from Playlist_tbl JOIN Playlist_songs_tbl ON  Playlist_tbl.P_Id=Playlist_songs_tbl.Playlist_Id JOIN Songs_tbl ON Songs_tbl.S_Id=Playlist_Songs_tbl.Song_id JOIN Artists_tbl ON Songs_tbl.S_A_Email=Artists_tbl.A_Email where Playlist_tbl.P_Id='" + play_id + "'", con);
             ds = new DataSet();
             da.Fill(ds);
             songByPlaylist.DataSource = ds;

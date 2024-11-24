@@ -2427,12 +2427,6 @@ img {
     z-index: -1;
 }
 
-
-
-/* ====== The End ====== */
-
-/*# sourceMappingURL=style.css.map */
-
 .song-play-area {
     width: 100vh;
 }
@@ -2454,4 +2448,40 @@ img {
 .dropdown-content div:hover {
     background-color: #f1f1f1;
 }
+
+/*current playing*/
+.now-playing {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    margin-left: 10px;
+    width: 150px;
+}
+
+
+
+
+
+/* ====== The End ====== */
+
+/*# sourceMappingURL=style.css.map */
 

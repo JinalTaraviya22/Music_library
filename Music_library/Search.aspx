@@ -15,18 +15,26 @@
     </section>
     <!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Album Category Area Start ##### -->
     <section class="album-catagory section-padding-100-0">
         <div class="container">
+            <!-- ##### Album Category Area Start ##### -->
             <div class="row oneMusic-albums" id="albumResults">
                 <asp:Literal ID="litAlbumResults" runat="server"></asp:Literal>
             </div>
+            <!-- ##### Album Category Area End ##### -->
+
+            <!-- ##### Artist Area Start ##### -->
             <div class="row oneMusic-buy-now-area mb-100 p-3" id="buyNowResults">
                 <asp:Literal ID="litBuyNowResults" runat="server"></asp:Literal>
             </div>
+            <!-- ##### Artist Area End ##### -->
+
+            <!-- ##### Song Area Start ##### -->
+
             <div class="one-music-songs-area mb-70" id="songResults">
                 <asp:Literal ID="litSongResults" runat="server"></asp:Literal>
             </div>
+            <!-- ##### Song Area End ##### -->
         </div>
     </section>
     <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
@@ -39,15 +47,5 @@
             </button>
         </div>
     </div>
-    <!-- ##### Album Category Area End ##### -->
-
-    <!-- ##### Artist Area Start ##### -->
-
-    <!-- ##### Artist Area End ##### -->
-
-    <!-- ##### Song Area Start ##### -->
-
-    <!-- ##### Song Area End ##### -->
-
 </asp:Content>
 

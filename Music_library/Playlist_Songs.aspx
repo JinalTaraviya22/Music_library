@@ -112,14 +112,15 @@
         <div class="one-music-songs-area" style="margin-top: 10px;">
             <div class="container">
                 <div class="row">
-                    <%--<div class="col-12">
+                    <div class="col-12 new-hits-area mb-100">
+                        <%--<div class="col-12">
                         <div class="section-heading style-2">
                             <p>Popular</p>
                             <h2>Popular releases from Artist</h2>
                         </div>
                     </div>--%>
-                    <!-- Single Song Area -->
-                    <%--<div class="col-12">
+                        <!-- Single Song Area -->
+                        <%--<div class="col-12">
                         <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                             <div class="song-thumbnail">
                                 <img src="img/bg-img/s4.jpg" alt="">
@@ -135,8 +136,8 @@
                         </div>
                     </div>--%>
 
-                    <%-- song play area with db variables --%>
-                    <%--<div class="col-12">
+                        <%-- song play area with db variables --%>
+                        <%--<div class="col-12">
                         <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                             <div class="song-thumbnail">
                                 <img src='<%# Eval("S_Image") %>' alt="">
@@ -158,10 +159,26 @@
                         </div>
                     </div>--%>
 
-                    <asp:DataList ID="songByPlaylist" runat="server" OnItemCommand="songByPlaylist_ItemCommand">
-                        <ItemTemplate>
-                            <div class="col-12">
-
+                        <asp:DataList ID="songByPlaylist" runat="server" OnItemCommand="songByPlaylist_ItemCommand">
+                            <ItemTemplate>
+                                <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
+                                    <div class="first-part d-flex align-items-center">
+                                        <div class="thumbnail">
+                                            <img src='<%# Eval("S_Image") %>' alt="">
+                                        </div>
+                                        <div class="content-">
+                                            <h6>
+                                                <asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
+                                            <p>
+                                                <asp:Label ID="anm" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <audio preload="auto" controls>
+                                        <source src="<%# Eval("S_Audio") %>">
+                                    </audio>
+                                </div>
+                                <%-- <div class="col-12">
                                 <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                     <div class="song-thumbnail">
                                         <img src='<%# Eval("S_Image") %>' alt="">
@@ -175,28 +192,16 @@
                                                 <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" ImageUrl="~/img/core-img/delw.png" />
                                             </asp:LinkButton>
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
-                                            <audio preload="auto" controls style="width: 200px"
-                                                data-song-title="<%# Eval("S_Name") %>"
-                                                data-song-image="<%# Eval("S_Image") %>"
-                                                data-song-audio="<%# Eval("S_Audio") %>">
+                                            <audio preload="auto" controls style="width: 200px">
                                                 <source src="<%# Eval("S_Audio") %>">
                                             </audio>
 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:DataList>
-                </div>
-                <div class="container-fluid" id="current-song" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; display: none; z-index: 1;">
-                    <div class="row" style="margin-left: 5px;">
-                        <img id="current-song-image" src="" alt="Current Song Image" style="height: 50px; margin-right: 10px;" />
-                        <h5 style="text-size-adjust: auto; color: white;" id="current-song-title" class="song-name"></h5>
-                        <%--<span id="current-song-audio"></span>--%>
-                        <button class="common_player-play-btn" id="play-pause-btn" style="margin-left: auto; margin-right: 30px;">
-                            <i class="fa fa-play"></i>
-                        </button>
+                            </div>--%>
+                            </ItemTemplate>
+                        </asp:DataList>
                     </div>
                 </div>
             </div>
