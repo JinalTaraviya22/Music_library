@@ -2472,10 +2472,65 @@ img {
     align-items: center;
 }
 
+#play-pause-btn {
+    background-color: white; /* White background for the button */
+    border: none;
+    border-radius: 50%; /* Circular shape */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#play-pause-icon {
+    color: black; /* Black icon color */
+    font-size: 18px; /* Adjust size as needed */
+}
+
 .progress-bar {
     margin-left: 10px;
-    width: 150px;
+    width: 200px;
+    height: 8px; /* You can adjust the height for better visibility */
+    background-color: #565656; /* Gray background for the unfilled part */
+    border-radius: 5px; /* Optional: Round the corners of the progress bar */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
+
+    .progress-bar::-webkit-progress-value {
+        background-color: white; /* White for the filled part */
+        border-radius: 5px; /* Optional: Round the corners of the filled part */
+    }
+
+    .progress-bar::-moz-progress-bar {
+        background-color: white; /* White for the filled part */
+        border-radius: 5px; /* Optional: Round the corners of the filled part */
+    }
+
+    /* Customizing the progress thumb (the blue dot) */
+    .progress-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px; /* Size of the thumb */
+        height: 16px; /* Size of the thumb */
+        background-color: white; /* Make the thumb white */
+        border-radius: 50%; /* Make it round */
+        border: 2px solid white; /* Optional: Border around the thumb */
+    }
+
+    .progress-bar::-moz-range-thumb {
+        width: 16px; /* Size of the thumb */
+        height: 16px; /* Size of the thumb */
+        background-color: white; /* Make the thumb white */
+        border-radius: 50%; /* Make it round */
+        border: 2px solid white; /* Optional: Border around the thumb */
+    }
+
+
+
 
 
 

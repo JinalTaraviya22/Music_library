@@ -439,59 +439,35 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     };
 })(jQuery, window, document);
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const nowPlayingTitle = document.getElementById("song-title");
     const nowPlayingArtist = document.getElementById("song-artist");
+    const nowPlayingImage = document.getElementById("song-image");
     const nowPlayingIcon = document.getElementById("play-pause-icon");
     const progressBar = document.getElementById("progress-bar");
     const playPauseBtn = document.getElementById("play-pause-btn");
-    let currentAudio = null;
+    let currentAudio = null;  // Holds the current audio element
+    let isPlaying = false;
 
-    // Restore playback state from localStorage if available
-    const savedState = JSON.parse(localStorage.getItem("playbackState"));
-    if (savedState && savedState.songSrc) {
-        // If playback state exists, restore song info and playback position
-        nowPlayingTitle.textContent = savedState.songTitle || "Unknown Song";
-        nowPlayingArtist.textContent = savedState.songArtist || "Unknown Artist";
+    // Load last played song from localStorage when the page loads
+    const lastPlayed = JSON.parse(localStorage.getItem("playbackState"));
+    if (lastPlayed && lastPlayed.songTitle && lastPlayed.songArtist) {
+        nowPlayingTitle.textContent = lastPlayed.songTitle;
+        nowPlayingArtist.textContent = lastPlayed.songArtist;
+        nowPlayingImage.src = lastPlayed.songImage;
+        nowPlayingImage.style.display = lastPlayed.songImage ? "block" : "none";
+        nowPlayingIcon.className = lastPlayed.isPlaying ? "fa fa-pause" : "fa fa-play";
 
-        // Find the audio element and set the src
-        const audioElement = document.querySelector("audio");
-        if (audioElement) {
-            const sourceElement = audioElement.querySelector("source");
-            if (sourceElement) {
-                sourceElement.src = savedState.songSrc;  // Set the song src properly
-                currentAudio = audioElement;  // Assign to currentAudio variable
-                currentAudio.currentTime = savedState.currentTime || 0;
-                currentAudio.load();  // Reload the audio element after setting the src
-
-                // Update progress bar to match saved time
-                progressBar.value = savedState.currentTime / (currentAudio.duration || 1) * 100;
-
-                // Play or pause based on saved state
-                if (savedState.isPlaying) {
-                    currentAudio.play();
-                    nowPlayingIcon.className = "fa fa-pause";
-                } else {
-                    nowPlayingIcon.className = "fa fa-play";
-                }
-
-                // Update the progress bar and handle end of the song
-                currentAudio.addEventListener("timeupdate", () => {
-                    if (!isNaN(currentAudio.duration)) {
-                        progressBar.value = (currentAudio.currentTime / currentAudio.duration) * 100;
-                    }
-                });
-
-                currentAudio.addEventListener("ended", () => {
-                    progressBar.value = 0;
-                    nowPlayingIcon.className = "fa fa-play";
-                });
-            }
+        // If the last song was playing, resume it
+        if (lastPlayed.isPlaying) {
+            currentAudio = new Audio(lastPlayed.songSrc);
+            currentAudio.currentTime = lastPlayed.currentTime || 0;
+            currentAudio.play();
+            isPlaying = true;
         }
     }
 
-    // Listen for play event on all audio elements (for each page's song)
+    // Listen for play event on all audio elements
     document.querySelectorAll("audio").forEach((audioElement) => {
         audioElement.addEventListener("play", () => {
             // Pause any other playing audio
@@ -505,13 +481,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const parentDiv = audioElement.closest(".single-new-item");
             const songTitle = parentDiv.querySelector(".content- h6").textContent.trim();
             const songArtist = parentDiv.querySelector(".content- p").textContent.trim();
+            const songImage = parentDiv.querySelector("img").getAttribute("src");
+            const songSrc = audioElement.querySelector("source").src;
 
             // Update "Now Playing" section
             nowPlayingTitle.textContent = songTitle || "Unknown Song";
             nowPlayingArtist.textContent = songArtist || "Unknown Artist";
-            nowPlayingIcon.className = "fa fa-pause";
+            nowPlayingImage.src = songImage || "";
+            nowPlayingImage.style.display = songImage ? "block" : "none";
 
-            // Set the current audio element
+            nowPlayingIcon.className = "fa fa-pause";
             currentAudio = audioElement;
 
             // Sync progress bar
@@ -527,13 +506,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 nowPlayingIcon.className = "fa fa-play";
             });
 
-            // Save playback state to localStorage
+            // Save playback state when the song starts
             savePlaybackState(audioElement);
         });
 
         audioElement.addEventListener("pause", () => {
             nowPlayingIcon.className = "fa fa-play";
-            savePlaybackState(audioElement); // Save state on pause as well
+            savePlaybackState(audioElement); // Save state when the song is paused
         });
     });
 
@@ -544,10 +523,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentAudio.paused) {
                 currentAudio.play();
                 nowPlayingIcon.className = "fa fa-pause";
+                isPlaying = true;
             } else {
                 currentAudio.pause();
                 nowPlayingIcon.className = "fa fa-play";
+                isPlaying = false;
             }
+        } else if (lastPlayed && lastPlayed.songSrc) {
+            // If no currentAudio, use the previously played song from localStorage
+            currentAudio = new Audio(lastPlayed.songSrc);
+            currentAudio.currentTime = lastPlayed.currentTime || 0;
+            currentAudio.play();
+            nowPlayingIcon.className = "fa fa-pause";
+            isPlaying = true;
+            savePlaybackState(currentAudio); // Save playback state
         }
     });
 
@@ -564,18 +553,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const playbackState = {
             songTitle: nowPlayingTitle.textContent,
             songArtist: nowPlayingArtist.textContent,
-            songSrc: audioElement.querySelector("source").src,  // Get the src from the source element
+            songImage: nowPlayingImage.src,
+            songSrc: audioElement.querySelector("source").src,
             currentTime: audioElement.currentTime,
+            duration: audioElement.duration,
             isPlaying: !audioElement.paused
         };
-        console.log("Saving playback state:", playbackState);  // Check if the state is correct
         localStorage.setItem("playbackState", JSON.stringify(playbackState));
     }
 });
-
-
-
-
 
 
 // [End Include All Plugins]

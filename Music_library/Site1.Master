@@ -885,11 +885,12 @@
         </div>
  <div id="now-playing" class="now-playing">
      <div class="container d-flex align-items-center">
+         <img id="song-image" src="" alt="Song Image" style="width: 80px; height: 80px; object-fit: cover; margin-right: 10px; display: none;" />
          <div class="song-info">
              <h5 id="song-title" style="color: white">No song playing</h5>
              <p id="song-artist">---</p>
          </div>
-         <div class="player-controls">
+         <div class="player-controls" style="margin-right:50px;">
              <button id="play-pause-btn" class="btn btn-primary">
                  <i id="play-pause-icon" class="fa fa-play"></i>
              </button>
