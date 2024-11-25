@@ -885,7 +885,7 @@
         </div>
  <div id="now-playing" class="now-playing">
      <div class="container d-flex align-items-center">
-         <img id="song-image" src="" alt="Song Image" style="width: 80px; height: 80px; object-fit: cover; margin-right: 10px; display: none;" />
+         <img id="song-image" src="" alt="Song Image" style="width: 60px; height: 60px; object-fit: cover; margin-right: 10px; display: none;" />
          <div class="song-info">
              <h5 id="song-title" style="color: white">No song playing</h5>
              <p id="song-artist">---</p>

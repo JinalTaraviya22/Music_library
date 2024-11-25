@@ -134,6 +134,7 @@
     <Content Include="img\bg-img\e8.jpg" />
     <Content Include="img\bg-img\e9.jpg" />
     <Content Include="img\bg-img\fa.jpg" />
+    <Content Include="img\bg-img\galaxy.png" />
     <Content Include="img\bg-img\pa1.jpg" />
     <Content Include="img\bg-img\pa2.jpg" />
     <Content Include="img\bg-img\pa3.jpg" />
@@ -146,6 +147,7 @@
     <Content Include="img\bg-img\s3.jpg" />
     <Content Include="img\bg-img\s4.jpg" />
     <Content Include="img\bg-img\t1.jpg" />
+    <Content Include="img\bg-img\toing.png" />
     <Content Include="img\bg-img\wt1.jpg" />
     <Content Include="img\bg-img\wt10.jpg" />
     <Content Include="img\bg-img\wt11.jpg" />
