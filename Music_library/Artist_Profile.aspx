@@ -20,7 +20,7 @@
     <!-- ##### Add Area Start ##### -->
     <section class="album-catagory section-padding-100-0">
         <div class="container">
-            <div class="add-area mb-100">
+            <div class="add-area mb-80">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">

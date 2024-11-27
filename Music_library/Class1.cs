@@ -59,6 +59,11 @@ namespace Music_library
             da.Fill(ds);
             return ds;
         }
+        public void user_delete(int id)
+        {
+            cmd = new SqlCommand("delete from User_tbl where U_Id='" + id + "'", con);
+            cmd.ExecuteNonQuery();
+        }
         public void a_reg_insert(string name, string email, string dob, string pwd, string img, string des)
         {
             cmd = new SqlCommand("insert into Artists_tbl (A_Name,A_Email,A_Dob,A_Password,A_Image,A_description) values ('" + name + "','" + email + "','" + dob + "','" + pwd + "','" + img + "','" + des + "')", con);

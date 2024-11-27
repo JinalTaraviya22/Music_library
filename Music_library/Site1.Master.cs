@@ -19,7 +19,7 @@ namespace Music_library
             if (Session["mail"] != null)
             {
                 mail = Session["mail"].ToString();
-                admin_btn.Visible = (mail == adminMail);
+                //admin_btn.Visible = (mail == adminMail);
                 login_btn.Text = "Account";
                 logout_btn.Visible = true;
                 ImageButton2.Visible = true;
@@ -50,10 +50,10 @@ namespace Music_library
             Response.Redirect("Index.aspx");
         }
 
-        protected void admin_btn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Admin.aspx");
-        }
+        //protected void admin_btn_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("Admin.aspx");
+        //}
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Search.aspx");

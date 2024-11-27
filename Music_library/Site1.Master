@@ -75,9 +75,8 @@
                                                         </ul>
                                                     </li>
                                                     <li><a href="Artists.aspx">Artists</a></li>
-                                                    <li>
-                                                        <asp:LinkButton ID="admin_btn" Visible="false" OnClick="admin_btn_Click" runat="server">Admin</asp:LinkButton></li>
-                                                    <li></li>
+                                                    <%--<li>
+                                                        <asp:LinkButton ID="admin_btn" Visible="false" OnClick="admin_btn_Click" runat="server">Admin</asp:LinkButton></li>--%>
                                                 </ul>
 
                                                 <!-- Login/Register & Cart Button -->
@@ -890,7 +889,7 @@
              <h5 id="song-title" style="color: white">No song playing</h5>
              <p id="song-artist">---</p>
          </div>
-         <div class="player-controls" style="margin-right:50px;">
+         <div class="player-controls" style="margin-right: 50px;">
              <button id="play-pause-btn" class="btn btn-primary">
                  <i id="play-pause-icon" class="fa fa-play"></i>
              </button>

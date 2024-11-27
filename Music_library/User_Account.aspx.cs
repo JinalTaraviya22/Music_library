@@ -38,6 +38,11 @@ namespace Music_library
 
                 String adminMail = ConfigurationManager.AppSettings["Email"];
 
+                if (mail.Equals(adminMail, StringComparison.OrdinalIgnoreCase))
+                {
+                    // User is admin
+                    adminPages.Visible = true; // Show admin tabs
+                }
                 cmd = new SqlCommand("select * from Artists_tbl where A_Email='" + mail + "'", con);
                 read = cmd.ExecuteReader();
                 if (read.HasRows)

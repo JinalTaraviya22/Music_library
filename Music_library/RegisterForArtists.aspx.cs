@@ -39,13 +39,33 @@ namespace Music_library
             newnm = "img/user_img/" + a_tbmail.Text.Replace(".","") + type;
             a_imgUpload.SaveAs(Server.MapPath(newnm));
         }
-
         protected void a_submit_Click(object sender, EventArgs e)
         {
-            img_upload();
-            cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm,a_tbdes.Text);
-            Session["mail"] = a_tbmail.Text;
-            Response.Redirect("Index.aspx");
+            string paymentId = hfPaymentId.Value;
+
+            if (!string.IsNullOrEmpty(paymentId))
+            {
+                // Process the payment
+                img_upload();
+                cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm, a_tbdes.Text);
+                Session["mail"] = a_tbmail.Text;
+                Response.Redirect("Index.aspx");
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Payment failed. Please try again.');", true);
+            }
         }
+
+
+        //protected void a_submit_Click(object sender, EventArgs e)
+        //{
+        //    //img_upload();
+        //    //cs.a_reg_insert(a_tbnm.Text, a_tbmail.Text, a_tbdob.Text, a_tbpwd.Text, newnm,a_tbdes.Text);
+        //    //Session["mail"] = a_tbmail.Text;
+        //    //Response.Redirect("Index.aspx");
+        //}
+       
+
     }
 }

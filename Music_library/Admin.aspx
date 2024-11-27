@@ -20,27 +20,29 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <section class="miscellaneous-area section-padding-100-0">
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="oneMusic-tabs-content">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">Users</a>
+                                <a href="AdUsers.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">User</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab--2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Artists</a>
+                                <a href="Adartists.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Artists</a>
+
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab--3" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Albums</a>
+                                <a href="Adalbums.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Albums</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab--4" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Delete Account Requests</a>
+                             <li class="nav-item">
+                                <a href="Adsongs.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Songs</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-12">
+                <%--  <div class="col-12">
                     <div class="tab-content mb-100" id="myTabContent">
                         <div class="tab-pane fade" id="tab1" role="tabpanel" aria-labelledby="tab--1">
                             <div class="oneMusic-tab-content">
@@ -94,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab--2">
+                       <%-- <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab--2">
                             <div class="oneMusic-tab-content">
                                 <!-- Tab Text -->
                                 <div class="oneMusic-tab-text">
@@ -150,8 +152,8 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab--3">
+                        </div>--%>
+                <%-- <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab--3">
                             <div class="oneMusic-tab-content">
                                 <!-- Tab Text -->
                                 <div class="oneMusic-tab-text">
@@ -195,50 +197,47 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade show active" id="tab4" role="tabpanel" aria-labelledby="tab--4">
+                        </div>--%>
+                <%-- <div class="tab-pane fade show active" id="tab4" role="tabpanel" aria-labelledby="tab--4">
                             <div class="oneMusic-tab-content">
                                 <!-- Tab Text -->
                                 <div class="oneMusic-tab-text">
-                                    <p><center>
-                                        <asp:GridView ID="dellaccgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="dellaccgrid_RowCommand" Width="100%">
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" HeaderStyle-HorizontalAlign="center" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label27" runat="server" Text='<%# Eval("Ad_Id") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Email" HeaderStyle-Width="200" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label28" runat="server" Text='<%# Eval("Ad_U_Email") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Name" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label29" runat="server" Text='<%# Eval("U_Name") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Approve" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
-                                                    <ItemTemplate>
-                                                        <asp:LinkButton ID="LinkButton5" runat="server" CommandArgument='<%# Eval("Ad_U_Email") %>' CommandName="cmd_accDelMail" ForeColor="#99CC00">Approve</asp:LinkButton>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Decline" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
-                                                    <ItemTemplate>
-                                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument='<%# Eval("Ad_U_Email") %>' CommandName="cmd_accMail" ForeColor="Red">Decline</asp:LinkButton>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
+                                    <p>
+                                        <center>
+                                            <asp:GridView ID="dellaccgrid" runat="server" AutoGenerateColumns="False" OnRowCommand="dellaccgrid_RowCommand" Width="100%">
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50" HeaderStyle-HorizontalAlign="center" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="20">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label27" runat="server" Text='<%# Eval("Ad_Id") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Email" HeaderStyle-Width="200" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label28" runat="server" Text='<%# Eval("Ad_U_Email") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Name" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label29" runat="server" Text='<%# Eval("U_Name") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Approve" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton5" runat="server" CommandArgument='<%# Eval("Ad_U_Email") %>' CommandName="cmd_accDelMail" ForeColor="#99CC00">Approve</asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Decline" HeaderStyle-Width="100" ItemStyle-HorizontalAlign="Center" ItemStyle-Height="50">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument='<%# Eval("Ad_U_Email") %>' CommandName="cmd_accMail" ForeColor="Red">Decline</asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                            </asp:GridView>
                                         </center>
                                     </p>
                                 </div>
                             </div>
-                        </div>
-
-
-                    </div>
-                </div>
+                        </div>--%>
             </div>
         </div>
         <!-- ##### Newsletter & Testimonials Area End ##### -->

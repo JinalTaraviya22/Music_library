@@ -25,6 +25,30 @@
 
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
+        <div class="container mb-30" id="adminPages" runat="server" visible="false">
+            <div class="row">
+                <div class="col-12">
+                    <div class="oneMusic-tabs-content">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a href="AdUsers.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="Adartists.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Artists</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a href="Adalbums.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Albums</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="Adsongs.aspx" class="btn btn-dark nav-link" role="tab" aria-controls="tab1" aria-selected="false">Songs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="row">
                 <!-- ***** weeks top ***** -->
@@ -151,47 +175,6 @@
                                 <p>Jessica Walsh</p>
                             </div>
                         </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="250ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa4.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>Tha Stoves</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa5.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>DJ Ajay</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="350ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa6.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>Radio Vibez</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="400ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa7.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>Music 4u</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -333,8 +316,9 @@
                                                         <label for="exampleinputemail1">Confirm Password</label>
                                                         <asp:TextBox ID="tbcpwd" CssClass="form-control" runat="server"></asp:TextBox>
                                                     </div>
-                                                        <center><asp:Button ID="pwd_btn" CssClass="btn oneMusic-btn m-2" OnClick="pwd_btn_Click" runat="server" Text="Update" />
-                                                    <br />
+                                                    <center>
+                                                        <asp:Button ID="pwd_btn" CssClass="btn oneMusic-btn m-2" OnClick="pwd_btn_Click" runat="server" Text="Update" />
+                                                        <br />
                                                         Click here to delete yout account.
                                                         <asp:Button ID="del_acc" CssClass="btn oneMusic-btn m-2" OnClick="del_acc_Click" runat="server" Text="Delete" /></center>
                                                 </div>

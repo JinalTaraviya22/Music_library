@@ -109,18 +109,20 @@
 
         <!-- ##### Song Area Start ##### -->
 
-        <div class="one-music-songs-area" style="margin-top: 10px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 new-hits-area mb-100">
-                        <%--<div class="col-12">
+        <div class="miscellaneous-area" style="margin-top: 10px;">
+            <center>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="new-hits-area mb-100">
+                                <%--<div class="col-12">
                         <div class="section-heading style-2">
                             <p>Popular</p>
                             <h2>Popular releases from Artist</h2>
                         </div>
                     </div>--%>
-                        <!-- Single Song Area -->
-                        <%--<div class="col-12">
+                                <!-- Single Song Area -->
+                                <%--<div class="col-12">
                         <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                             <div class="song-thumbnail">
                                 <img src="img/bg-img/s4.jpg" alt="">
@@ -136,8 +138,8 @@
                         </div>
                     </div>--%>
 
-                        <%-- song play area with db variables --%>
-                        <%--<div class="col-12">
+                                <%-- song play area with db variables --%>
+                                <%--<div class="col-12">
                         <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                             <div class="song-thumbnail">
                                 <img src='<%# Eval("S_Image") %>' alt="">
@@ -159,26 +161,29 @@
                         </div>
                     </div>--%>
 
-                        <asp:DataList ID="songByPlaylist" runat="server" OnItemCommand="songByPlaylist_ItemCommand">
-                            <ItemTemplate>
-                                <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
-                                    <div class="first-part d-flex align-items-center">
-                                        <div class="thumbnail">
-                                            <img src='<%# Eval("S_Image") %>' alt="">
+                                <asp:DataList ID="songByPlaylist" runat="server" OnItemCommand="songByPlaylist_ItemCommand">
+                                    <ItemTemplate>
+                                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
+                                            <div class="first-part d-flex align-items-center">
+                                                <div class="thumbnail">
+                                                    <img src='<%# Eval("S_Image") %>' alt="">
+                                                </div>
+                                                <div class="content-" style="margin-right: 200px;">
+                                                    <h6>
+                                                        <asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
+                                                    <p>
+                                                        <asp:Label ID="anm" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>
+                                                    </p>
+                                                </div>
+                                                <asp:LinkButton ID="songremove" runat="server" Visible="false" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songRemovePlaylist">
+                                                    <asp:Image ID="Image2" runat="server" ImageAlign="Right" Height="20px" Width="20px" CssClass="mr-4" ImageUrl="~/img/core-img/del.png" />
+                                                </asp:LinkButton>
+                                            </div>
+                                            <audio preload="auto" controls>
+                                                <source src="<%# Eval("S_Audio") %>">
+                                            </audio>
                                         </div>
-                                        <div class="content-">
-                                            <h6>
-                                                <asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
-                                            <p>
-                                                <asp:Label ID="anm" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <audio preload="auto" controls>
-                                        <source src="<%# Eval("S_Audio") %>">
-                                    </audio>
-                                </div>
-                                <%-- <div class="col-12">
+                                        <%-- <div class="col-12">
                                 <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                     <div class="song-thumbnail">
                                         <img src='<%# Eval("S_Image") %>' alt="">
@@ -200,11 +205,13 @@
                                     </div>
                                 </div>
                             </div>--%>
-                            </ItemTemplate>
-                        </asp:DataList>
+                                    </ItemTemplate>
+                                </asp:DataList>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </center>
         </div>
     </section>
 

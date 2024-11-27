@@ -51,6 +51,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Razorpay, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Razorpay.2.2.0\lib\net45\Razorpay.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,7 +77,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Adalbums.aspx" />
+    <Content Include="Adartists.aspx" />
     <Content Include="Admin.aspx" />
+    <Content Include="Adsongs.aspx" />
+    <Content Include="AdUsers.aspx" />
     <Content Include="App_Data\Music_Library.mdf" />
     <Content Include="App_Data\Music_Library_log.ldf">
       <DependentUpon>Music_Library.mdf</DependentUpon>
@@ -161,6 +168,7 @@
     <Content Include="img\bg-img\wt8.jpg" />
     <Content Include="img\bg-img\wt9.jpg" />
     <Content Include="img\Capture.PNG" />
+    <Content Include="img\core-img\del.png" />
     <Content Include="img\core-img\favicon.ico" />
     <Content Include="img\core-img\logo.png" />
     <Content Include="img\core-img\logo1.png" />
@@ -188,12 +196,40 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adalbums.aspx.cs">
+      <DependentUpon>Adalbums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adalbums.aspx.designer.cs">
+      <DependentUpon>Adalbums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adartists.aspx.cs">
+      <DependentUpon>Adartists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adartists.aspx.designer.cs">
+      <DependentUpon>Adartists.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adsongs.aspx.cs">
+      <DependentUpon>Adsongs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adsongs.aspx.designer.cs">
+      <DependentUpon>Adsongs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdUsers.aspx.cs">
+      <DependentUpon>AdUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdUsers.aspx.designer.cs">
+      <DependentUpon>AdUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artists.aspx.cs">
       <DependentUpon>Artists.aspx</DependentUpon>

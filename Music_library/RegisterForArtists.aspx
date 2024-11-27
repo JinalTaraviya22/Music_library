@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
     <!-- ##### Breadcumb Area Start ##### -->
@@ -60,7 +61,9 @@
                                     <asp:Label ID="Label1" runat="server" Text="Upload Image with dimentions of 225*225"></asp:Label>
                                     <%--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">--%>
                                 </div>
-                                <asp:Button ID="a_submit" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Submit" OnClick="a_submit_Click" />
+                                <asp:HiddenField ID="hfPaymentId" runat="server" />
+                                <asp:Button ID="a_submit" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Submit" OnClick="a_submit_Click" OnClientClick="triggerRazorpay(); return false;" />
+                                <%--<asp:Button ID="Button1" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Submit" OnClick="a_submit_Click"/>--%>
                                 <%--<button type="submit" class="btn oneMusic-btn mt-30">Register</button>--%>
                                 <br />
                                 <br />
@@ -72,6 +75,33 @@
             </div>
         </div>
     </section>
+    <script>
+        function triggerRazorpay() {
+            var options = {
+                "key": "rzp_test_yCgrsfXSuM7SxL", // Replace with your Razorpay Key ID
+                "amount": "100", // Amount in paisa (e.g., 50000 = 500 INR)
+                "currency": "INR",
+                "name": "Music Library",
+                "description": "Registration Fee",
+                "handler": function (response) {
+                    // On successful payment
+                    document.getElementById('<%= hfPaymentId.ClientID %>').value = response.razorpay_payment_id;
+                    // Trigger the postback after successful payment
+                    __doPostBack('<%= a_submit.UniqueID %>', '');  // Postback to server-side handler
+                },
+                "prefill": {
+                    "email": document.getElementById('<%= a_tbmail.ClientID %>').value,
+            "name": document.getElementById('<%= a_tbnm.ClientID %>').value
+                },
+                "theme": {
+                    "color": "#000000"
+                }
+            };
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    </script>
+
     <!-- ##### Login Area End ##### -->
 </asp:Content>
 
