@@ -161,6 +161,13 @@ namespace Music_library
             da.Fill(ds);
             return ds;
         }
+        public DataSet song_albumselectId(int id)
+        {
+            da = new SqlDataAdapter("select * from Songs_tbl where SAl_Id='" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
         public DataSet song_select()
         {
             da = new SqlDataAdapter("select * from Songs_tbl", con);

@@ -36,7 +36,7 @@ namespace Music_library
         }
 
         void fillplaylist() {
-            da = new SqlDataAdapter("Select * from Playlist_tbl where P_User_Email='admin123@gmail.com'",con);
+            da = new SqlDataAdapter("Select * from Playlist_tbl where P_User_Email='admin123@gmail.com' And P_Name!='Liked Songs'", con);
             ds = new DataSet();
             da.Fill(ds);
             ListView2.DataSource = ds;
@@ -50,14 +50,14 @@ namespace Music_library
             ListView1.DataBind();
         }
         void fillartist() {
-            da = new SqlDataAdapter("select * from Artists_tbl ORDER BY A_Id Desc",con);
+            da = new SqlDataAdapter("SELECT TOP 6 * FROM Artists_tbl ORDER BY A_Id DESC", con);
             ds = new DataSet();
             da.Fill(ds);
             ListView3.DataSource = ds;
             ListView3.DataBind();
         }
         void fillsongs() {
-            da = new SqlDataAdapter("select S_Name,S_Image,S_Audio,A_Name from Songs_tbl JOIN Artists_tbl ON Songs_tbl.S_A_Email=Artists_tbl.A_Email ORDER BY Songs_tbl.S_Id DESC", con);
+            da = new SqlDataAdapter("select TOP 5 S_Name,S_Image,S_Audio,A_Name from Songs_tbl JOIN Artists_tbl ON Songs_tbl.S_A_Email=Artists_tbl.A_Email ORDER BY Songs_tbl.S_Id DESC", con);
             ds = new DataSet();
             da.Fill(ds);
             ListView4.DataSource = ds;

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Song_List.aspx.cs" Inherits="Music_library.Song_List" %>
+﻿<%@ Page Title="Songs List" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Song_List.aspx.cs" Inherits="Music_library.Song_List" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -193,17 +193,12 @@
         <div class="one-music-songs-area mb-70" style="margin-top: 40px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <!-- <div class="section-heading style-2">
-                        <p>Popular</p>
-                        <h2>Popular releases from Artist</h2>
-                    </div> -->
-                    </div>
-                    <!-- Single Song Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="new-hits-area mb-100">
+                            <!-- Single Song Area -->
 
-                    <asp:DataList ID="DataList1" runat="server" DataSourceID="songs_showByAlbum" RepeatDirection="Vertical" OnItemCommand="DataList1_ItemCommand">
-                        <ItemTemplate>
-                            <div class="col-12">
+                            <%-- db song  --%>
+                            <%--<div class="col-12">
                                 <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                     <div class="song-thumbnail">
                                         <img src="<%# Eval("S_Image") %>" alt="">
@@ -217,7 +212,6 @@
                                             <t />
                                             <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
                                             <asp:Button ID="dl1b_playlist" CssClass="button-57" runat="server" Text="+" />
-                                            <%--PopUp Demo--%>
                                             <asp:Panel ID="Panel1" runat="server" BackColor="white" Width="500" style="z-index:3;padding:10px;">
                                                 <h1>Playlists</h1>
                                                 <asp:DropDownList ID="ddplaylist" CssClass="form-control" runat="server" DataSourceID="PlaylistByUserId" DataTextField="P_Name" DataValueField="P_Id">
@@ -236,7 +230,6 @@
                                             </asp:Panel>
 
                                             <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="dl1b_playlist" PopupControlID="Panel1" OkControlID="btncancel"></ajaxToolkit:ModalPopupExtender>
-                                            <%--PopUp Demo--%>
                                         </div>
                                         <audio preload="auto" controls style="width: 200px"
                                             data-song-title="<%# Eval("S_Name") %>"
@@ -246,16 +239,58 @@
                                         </audio>
                                     </div>
                                 </div>
-                            </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:DataList>
+                            </div>--%>
 
-                    <asp:SqlDataSource ID="songs_showByAlbum" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Songs_tbl] WHERE ([S_Al_Id] = @S_Al_Id)">
-                        <SelectParameters>
-                            <asp:QueryStringParameter Name="S_Al_Id" QueryStringField="Albumid" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+
+                            <asp:DataList ID="DataList1" runat="server" DataSourceID="songs_showByAlbum" RepeatDirection="Vertical" OnItemCommand="DataList1_ItemCommand">
+                                <ItemTemplate>
+                                    <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp mb-2" data-wow-delay="150ms">
+                                        <div class="first-part d-flex align-items-center">
+                                            <div class="thumbnail">
+                                                <img src='<%# Eval("S_Image") %>' alt="">
+                                            </div>
+                                            <div class="content-" style="margin-right: 200px;">
+                                                <h6>
+                                                    <asp:Label ID="snm" runat="server" Text='<%# Eval("S_Name") %>'></asp:Label></h6>
+                                                <p>
+                                                    <%--<asp:Label ID="anm" runat="server" Text='<%# Eval("A_Name") %>'></asp:Label>--%>
+                                                </p>
+                                            </div>
+                                            <asp:HiddenField ID="hidsid" Value='<%# Eval("S_Id") %>' runat="server" />
+                                            <asp:Button ID="dl1b_playlist" CssClass="btn btn-dark mr-4" runat="server" Text=" + " style="z-index:0"/>
+                                            <asp:Panel ID="Panel1" runat="server" BackColor="white" Width="500" Style="z-index: 10; padding: 10px;">
+                                                <h1>Playlists</h1>
+                                                <asp:DropDownList ID="ddplaylist" CssClass="form-control" runat="server" DataSourceID="PlaylistByUserId" DataTextField="P_Name" DataValueField="P_Id">
+                                                    <asp:ListItem>--Select Playlist--</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:SqlDataSource ID="PlaylistByUserId" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Playlist_tbl] WHERE ([P_User_Email] = @P_User_Email)">
+                                                    <SelectParameters>
+                                                        <asp:SessionParameter Name="P_User_Email" SessionField="mail" Type="String" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>
+                                                <br />
+                                                <div class="btnbyside">
+                                                    <asp:Button ID="btnadd" CommandArgument='<%# Eval("S_Id") %>' CommandName="cmd_songidForplaylist" CssClass="btn oneMusic-btn mt-30" runat="server" Text="Add" />
+                                                    <asp:Button ID="btncancel" runat="server" Text="Cancel" CssClass="btn oneMusic-btn mt-30" />
+                                                </div>
+                                            </asp:Panel>
+                                            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="dl1b_playlist" PopupControlID="Panel1" OkControlID="btncancel"></ajaxToolkit:ModalPopupExtender>
+                                        </div>
+                                        <audio preload="auto" controls>
+                                            <source src="<%# Eval("S_Audio") %>">
+                                        </audio>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:DataList>
+
+                            <asp:SqlDataSource ID="songs_showByAlbum" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Music_Library.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Songs_tbl] WHERE ([S_Al_Id] = @S_Al_Id)">
+                                <SelectParameters>
+                                    <asp:QueryStringParameter Name="S_Al_Id" QueryStringField="Albumid" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

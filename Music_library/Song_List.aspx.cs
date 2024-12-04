@@ -33,32 +33,38 @@ namespace Music_library
         {
             startcon();
             id = Convert.ToInt32(Request.QueryString["Albumid"]);
-            cmd = new SqlCommand("select * from Album_tbl where Al_Id='" + id + "'", con);
-            read = cmd.ExecuteReader();
             if (Session["mail"] != null)
             {
                 mail = Session["mail"].ToString();
+                cmd = new SqlCommand("select * from Album_tbl where Al_Id='" + id + "'", con);
+                read = cmd.ExecuteReader();
                 if (read.HasRows)
                 {
                     if (read.Read())
                     {
                         nm.Text = read["Al_Name"].ToString();
                         mail2 = read["Al_A_Email"].ToString();
-                        if (mail == mail2 || mail=="admin123@gmail.com")
-                        {
-                            u_songform.Visible = true;
-                            read.Close();
-                            fillUpdateData();
-                        }
+                        read.Close();
                     }
                 }
+                if (mail == mail2 || mail == "admin123@gmail.com")
+                {
+                    u_songform.Visible = true;
+                }
+                fillUpdateData();
+                // Bind the DataList on every postback
+                //if (!IsPostBack)
+                //{
+                //    fillsongListdata(); // Ensure this method binds the DataList
+                //}
+                //fillsongListdata();
             }
             else
             {
                 Response.Redirect("Login.aspx");
             }
             read.Close();
-            //if user then show playlist 
+
         }
 
         void fillUpdateData()
@@ -66,6 +72,15 @@ namespace Music_library
             ds = cs.album_selectId(id);
             alupdatenm.Text = ds.Tables[0].Rows[0]["Al_Name"].ToString();
             alcover_tb.Value = ds.Tables[0].Rows[0]["Al_Image"].ToString();
+        }
+
+        void fillsongListdata()
+        {
+            //da = new SqlDataAdapter("select * from Album_tbl JOIN Songs_tbl ON  Album_tbl.Al_Id=Songs_tbl.S_Al_Id JOIN Artists_tbl ON Songs_tbl.S_A_Email=Artists_tbl.A_Email where Songs_tbl.S_Al_Id='" + id + "'", con);
+            //ds = new DataSet();
+            //da.Fill(ds);
+            //DataList1.DataSource = ds;
+            //DataList1.DataBind();
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -85,11 +100,11 @@ namespace Music_library
                     }
                 }
             }
-            else if (e.CommandName == "cmd_song_del")
-            {
-                int songid = Convert.ToInt32(e.CommandArgument);
-                cs.song_delete(id);
-            }
+            //else if (e.CommandName == "cmd_song_del")
+            //{
+            //    int songid = Convert.ToInt32(e.CommandArgument);
+            //    cs.song_delete(id);
+            //}
         }
 
         protected void del_s_Click(object sender, EventArgs e)

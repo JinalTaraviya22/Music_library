@@ -53,7 +53,7 @@
             <div class="row">
                 <!-- ***** weeks top ***** -->
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-12">
                     <div class="weeks-top-area mb-100">
 
                         <!-- ##### User playlist area start##### -->
@@ -139,44 +139,25 @@
                 </div>
 
                 <!-- ***** Popular Artists ***** -->
-                <div class="col-12 col-lg-6">
+                <%-- <div class="col-12 col-lg-6">
                     <div class="popular-artists-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
                             <p>See what’s new</p>
                             <h2>Artist you follow</h2>
-                        </div>
+                        </div>--%>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
+                <!-- Single Artist -->
+                <%--<div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
                             <div class="thumbnail">
                                 <img src="img/bg-img/pa1.jpg" alt="">
                             </div>
                             <div class="content-">
                                 <p>Sam Smith</p>
                             </div>
-                        </div>
+                        </div>--%>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="150ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa2.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>William Parker</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="200ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/pa3.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>Jessica Walsh</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%-- </div>
+                </div>--%>
             </div>
         </div>
 
