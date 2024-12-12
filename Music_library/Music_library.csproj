@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\admin\OneDrive\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -198,49 +202,42 @@
   <ItemGroup>
     <Compile Include="Adalbums.aspx.cs">
       <DependentUpon>Adalbums.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Adalbums.aspx.designer.cs">
       <DependentUpon>Adalbums.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adartists.aspx.cs">
       <DependentUpon>Adartists.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Adartists.aspx.designer.cs">
       <DependentUpon>Adartists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Adsongs.aspx.cs">
       <DependentUpon>Adsongs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Adsongs.aspx.designer.cs">
       <DependentUpon>Adsongs.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdUsers.aspx.cs">
       <DependentUpon>AdUsers.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdUsers.aspx.designer.cs">
       <DependentUpon>AdUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artists.aspx.cs">
       <DependentUpon>Artists.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Artists.aspx.designer.cs">
       <DependentUpon>Artists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artist_Profile.aspx.cs">
       <DependentUpon>Artist_Profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Artist_Profile.aspx.designer.cs">
       <DependentUpon>Artist_Profile.aspx</DependentUpon>
@@ -248,35 +245,30 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MusicPlayer.ascx.cs">
       <DependentUpon>MusicPlayer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MusicPlayer.ascx.designer.cs">
       <DependentUpon>MusicPlayer.ascx</DependentUpon>
     </Compile>
     <Compile Include="Playlists.aspx.cs">
       <DependentUpon>Playlists.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Playlists.aspx.designer.cs">
       <DependentUpon>Playlists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Playlist_Songs.aspx.cs">
       <DependentUpon>Playlist_Songs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Playlist_Songs.aspx.designer.cs">
       <DependentUpon>Playlist_Songs.aspx</DependentUpon>
@@ -284,28 +276,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegisterForArtists.aspx.cs">
       <DependentUpon>RegisterForArtists.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegisterForArtists.aspx.designer.cs">
       <DependentUpon>RegisterForArtists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -313,14 +301,12 @@
     <Compile Include="SongDetails.cs" />
     <Compile Include="Song_List.aspx.cs">
       <DependentUpon>Song_List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Song_List.aspx.designer.cs">
       <DependentUpon>Song_List.aspx</DependentUpon>
     </Compile>
     <Compile Include="User_Account.aspx.cs">
       <DependentUpon>User_Account.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="User_Account.aspx.designer.cs">
       <DependentUpon>User_Account.aspx</DependentUpon>
@@ -378,6 +364,9 @@
     <Folder Include="img\playlist_img\" />
     <Folder Include="img\song_img\" />
     <Folder Include="img\user_img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

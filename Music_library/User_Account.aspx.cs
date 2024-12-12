@@ -51,6 +51,7 @@ namespace Music_library
                     u_artist.Visible = true;
                     u_albumlist.Visible = true;
                     a_des.Visible = true;
+                    //here
                     if (read.Read())
                     {
                         fillUpdateDataartist();

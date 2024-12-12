@@ -33,30 +33,30 @@ namespace Music_library
         protected global::System.Web.UI.WebControls.Button searchbtn;
 
         /// <summary>
-        /// litAlbumResults control.
+        /// dlAlbumResults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litAlbumResults;
+        protected global::System.Web.UI.WebControls.DataList dlAlbumResults;
 
         /// <summary>
-        /// litBuyNowResults control.
+        /// dlBuyNowResults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litBuyNowResults;
+        protected global::System.Web.UI.WebControls.DataList dlBuyNowResults;
 
         /// <summary>
-        /// litSongResults control.
+        /// dlSongResults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSongResults;
+        protected global::System.Web.UI.WebControls.DataList dlSongResults;
     }
 }

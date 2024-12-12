@@ -49,21 +49,21 @@ namespace Music_library
         {
             // Query to search in songs, albums, and artists
             string query = @"
-            SELECT 'Song' AS Type, S_Id AS Id, S_Name AS Name, S_Image AS Image, S_Audio AS Audio, NULL AS AlbumName, NULL AS ArtistName 
-            FROM Songs_tbl 
-            WHERE S_Name LIKE @searchTerm
+                SELECT 'Song' AS Type, S_Id AS Id, S_Name AS Name, S_Image AS Image, S_Audio AS Audio, NULL AS AlbumName, NULL AS ArtistName 
+                FROM Songs_tbl 
+                WHERE S_Name LIKE @searchTerm
 
-            UNION
+                UNION
 
-            SELECT 'Album' AS Type, Al_Id AS Id, Al_Name AS Name, Al_Image AS Image, NULL AS Audio, Al_Name AS AlbumName, NULL AS ArtistName 
-            FROM Album_tbl 
-            WHERE Al_Name LIKE @searchTerm
+                SELECT 'Album' AS Type, Al_Id AS Id, Al_Name AS Name, Al_Image AS Image, NULL AS Audio, Al_Name AS AlbumName, NULL AS ArtistName 
+                FROM Album_tbl 
+                WHERE Al_Name LIKE @searchTerm
 
-            UNION
+                UNION
 
-            SELECT 'Artist' AS Type, A_Id AS Id, A_Name AS Name, A_Image AS Image, NULL AS Audio, NULL AS AlbumName, A_Name AS ArtistName 
-            FROM Artists_tbl 
-            WHERE A_Name LIKE @searchTerm";
+                SELECT 'Artist' AS Type, A_Id AS Id, A_Name AS Name, A_Image AS Image, NULL AS Audio, NULL AS AlbumName, A_Name AS ArtistName 
+                FROM Artists_tbl 
+                WHERE A_Name LIKE @searchTerm";
 
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
@@ -73,6 +73,10 @@ namespace Music_library
                 {
                     // Clear previous results
                     ClearPreviousResults();
+
+                    var songResults = new List<dynamic>();
+                    var albumResults = new List<dynamic>();
+                    var artistResults = new List<dynamic>();
 
                     while (reader.Read())
                     {
@@ -86,96 +90,169 @@ namespace Music_library
 
                         if (type == "Song")
                         {
-                            // Display as a single song area
-                            DisplaySingleSong(id, name, artistName, image, audio);
+                            songResults.Add(new { Name = name, Image = image, Audio = audio, Album = albumName });
                         }
                         else if (type == "Album")
                         {
-                            // Display as a single album in album category area
-                            DisplaySingleAlbum(id, name, image);
+                            albumResults.Add(new { Name = name, Image = image });
                         }
                         else if (type == "Artist")
                         {
-                            // Display as a single album area in buy now area
-                            DisplaySingleArtist(id, artistName, image);
+                            artistResults.Add(new { Name = name, Image = image, Id = id });
                         }
                     }
+
+                    // Bind data to the DataLists
+                    dlSongResults.DataSource = songResults;
+                    dlSongResults.DataBind();
+
+                    dlAlbumResults.DataSource = albumResults;
+                    dlAlbumResults.DataBind();
+
+                    dlBuyNowResults.DataSource = artistResults;
+                    dlBuyNowResults.DataBind();
                 }
             }
         }
 
+
         private void ClearPreviousResults()
         {
-            litSongResults.Text = string.Empty;
-            litAlbumResults.Text = string.Empty;
-            litBuyNowResults.Text = string.Empty;
+            //litSongResults.Text = string.Empty;
+            //litAlbumResults.Text = string.Empty;
+            //litBuyNowResults.Text = string.Empty;
+            dlSongResults.DataSource = null;
+            dlSongResults.DataBind();
+
+            dlAlbumResults.DataSource = null;
+            dlAlbumResults.DataBind();
+
+            dlBuyNowResults.DataSource = null;
+            dlBuyNowResults.DataBind();
         }
 
-        private void DisplaySingleSong(int id, string songName, string artistName, string image, string audio)
-        {
-            string songHtml = $@"
-                <div class='col-12'>
-                    <div class='single-song-area mb-30 d-flex flex-wrap align-items-end'>
-                        <div class='song-thumbnail'>
-                            <img src='{image}' alt='{songName}'>
-                        </div>
-                        <div class='song-play-area'>
-                            <div class='song-name'>
-                                <p>{songName}</p>
-                            </div>
-                            <audio preload='auto' controls
-                                    data-song-title='{songName}'
-                                    data-song-image = '{image}'
-                                    data-song-audio = '{audio}' >
-                                <source src='{audio}'>
-                            </audio>
-                        </div>
-                    </div>
-                </div>";
+        //private void SearchDatabase(string searchTerm)
+        //{
+        //    // Query to search in songs, albums, and artists
+        //    string query = @"
+        //    SELECT 'Song' AS Type, S_Id AS Id, S_Name AS Name, S_Image AS Image, S_Audio AS Audio, NULL AS AlbumName, NULL AS ArtistName 
+        //    FROM Songs_tbl 
+        //    WHERE S_Name LIKE @searchTerm
 
-            // Append to the Literal control
-            litSongResults.Text += songHtml;
-        }
-        private void DisplaySingleAlbum(int id, string albumName, string image)
-        {
-            // Create HTML for a single album
-            string albumHtml = $@"
-        <a href='Song_List.aspx?Albumid={id}'>
-            <div class='col-12 col-sm-4 col-md-3 col-lg-2 single-album-item'>
-                <div class='single-album'>
-                    <img src='{image}' alt=''>
-                    <div class='album-info'>
-                        <h5>{albumName}</h5>
-                        <p>Album Description Here</p>
-                    </div>
-                </div>
-            </div>
-        </a>";
+        //    UNION
 
-            // Append to the Literal control
-            litAlbumResults.Text += albumHtml;
-        }
+        //    SELECT 'Album' AS Type, Al_Id AS Id, Al_Name AS Name, Al_Image AS Image, NULL AS Audio, Al_Name AS AlbumName, NULL AS ArtistName 
+        //    FROM Album_tbl 
+        //    WHERE Al_Name LIKE @searchTerm
 
-        private void DisplaySingleArtist(int id, string artistName, string image)
-        {
-            // Create HTML for a single artist
-            string artistHtml = $@"
-                <div class='col-12 col-sm-6 col-md-3'>
-                    <div class='single-event-area mb-30'>
-                        <div class='event-thumbnail'>
-                            <img src='{image}' alt=''>
-                        </div>
-                        <div class='album-info'>
-                            <a href='Artist_Profile.aspx?Aid={id}'>
-                                <h5>{artistName}</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>";
+        //    UNION
 
-            // Append to the Literal control
-            litBuyNowResults.Text += artistHtml;
-        }
+        //    SELECT 'Artist' AS Type, A_Id AS Id, A_Name AS Name, A_Image AS Image, NULL AS Audio, NULL AS AlbumName, A_Name AS ArtistName 
+        //    FROM Artists_tbl 
+        //    WHERE A_Name LIKE @searchTerm";
+
+        //    using (SqlCommand cmd = new SqlCommand(query, con))
+        //    {
+        //        cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
+        //        using (SqlDataReader reader = cmd.ExecuteReader())
+        //        {
+        //            // Clear previous results
+        //            ClearPreviousResults();
+
+        //            while (reader.Read())
+        //            {
+        //                string type = reader["Type"].ToString();
+        //                string name = reader["Name"].ToString();
+        //                string image = reader["Image"] as string; // Assuming this is the image path
+        //                string audio = reader["Audio"] as string; // Assuming this is the audio path
+        //                string albumName = reader["AlbumName"] as string;
+        //                string artistName = reader["ArtistName"] as string;
+        //                int id = Convert.ToInt32(reader["Id"]);
+
+        //                if (type == "Song")
+        //                {
+        //                    // Display as a single song area
+        //                    DisplaySingleSong(id, name, artistName, image, audio);
+        //                }
+        //                else if (type == "Album")
+        //                {
+        //                    // Display as a single album in album category area
+        //                    DisplaySingleAlbum(id, name, image);
+        //                }
+        //                else if (type == "Artist")
+        //                {
+        //                    // Display as a single album area in buy now area
+        //                    DisplaySingleArtist(id, artistName, image);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        //private void DisplaySingleSong(int id, string songName, string artistName, string image, string audio)
+        //{
+        //    string songHtml = $@"
+        //        <div class='col-12'>
+        //            <div class='single-song-area mb-30 d-flex flex-wrap align-items-end'>
+        //                <div class='song-thumbnail'>
+        //                    <img src='{image}' alt='{songName}'>
+        //                </div>
+        //                <div class='song-play-area'>
+        //                    <div class='song-name'>
+        //                        <p>{songName}</p>
+        //                    </div>
+        //                    <audio preload='auto' controls>
+        //                        <source src='{audio}'>
+        //                    </audio>
+        //                </div>
+        //            </div>
+        //        </div>";
+
+        //    // Append to the Literal control
+        //    litSongResults.Text += songHtml;
+        //}
+        //private void DisplaySingleAlbum(int id, string albumName, string image)
+        //{
+        //    // Create HTML for a single album
+        //    string albumHtml = $@"
+        //<a href='Song_List.aspx?Albumid={id}'>
+        //    <div class='col-12 col-sm-4 col-md-3 col-lg-2 single-album-item'>
+        //        <div class='single-album'>
+        //            <img src='{image}' alt=''>
+        //            <div class='album-info'>
+        //                <h5>{albumName}</h5>
+        //                <p>Album Description Here</p>
+        //            </div>
+        //        </div>
+        //    </div>
+        //</a>";
+
+        //    // Append to the Literal control
+        //    litAlbumResults.Text += albumHtml;
+        //}
+
+        //private void DisplaySingleArtist(int id, string artistName, string image)
+        //{
+        //    // Create HTML for a single artist
+        //    string artistHtml = $@"
+        //        <div class='col-12 col-sm-6 col-md-3'>
+        //            <div class='single-event-area mb-30'>
+        //                <div class='event-thumbnail'>
+        //                    <img src='{image}' alt=''>
+        //                </div>
+        //                <div class='album-info'>
+        //                    <a href='Artist_Profile.aspx?Aid={id}'>
+        //                        <h5>{artistName}</h5>
+        //                    </a>
+        //                </div>
+        //            </div>
+        //        </div>";
+
+        //    // Append to the Literal control
+        //    litBuyNowResults.Text += artistHtml;
+        //}
 
     }
 }
